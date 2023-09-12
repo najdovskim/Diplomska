@@ -25,7 +25,7 @@ namespace JsonToDbTest
             var optionsBuilder = new DbContextOptionsBuilder<DataContext>();
             optionsBuilder.UseSqlServer(connectionString);
 
-           using (var context = new DataContext(optionsBuilder.Options))
+           using (var context = serviceProvider.GetRequiredService<DataContext>())
             {
                 try
                 {
@@ -160,64 +160,54 @@ namespace JsonToDbTest
                 catch (Exception ex)
                 {
                     Console.WriteLine("Error: " + ex.Message);
-                }*/
-                    var year = "2020";
-                    var races = await ergastService.GetRacesAsync(year);
-                    Console.WriteLine(races.MRData.RaceTable.Races[0].RaceName);
+                }*/                
+                var year = "2020";
+                var races = await ergastService.GetRacesAsync(year);
+                
+                // Retrieve existing circuits and create a dictionary to map names to IDs
+                var circuitNameToIdMap = await context.Circuits.ToDictionaryAsync(c => c.CircuitName, c => c.CircuitId);
 
-                    if (races != null && races.MRData != null && races.MRData.RaceTable.Races != null)
-                    {
-                        var newSeason = new Season
-                        {
-                            SeasonId = int.Parse(year)
-                        };
-                        context.Seasons.Add(newSeason);
-                        await context.SaveChangesAsync();
-/*
-                        foreach (var race in races.MRData.RaceTable.Races)
-                        {
-                            var circuit = await context.Circuits.FirstOrDefaultAsync(r => r.CircuitId == race.Circuit.CircuitId);
-                            var season = await context.Seasons.FirstOrDefaultAsync(r => r.Year == int.Parse(race.Season));
-
-                            var newRace = new Race
-                            {
-                                RaceId = int.Parse(race.Season)*100 + int.Parse(race.Round),
-                                raceName = race.RaceName,
-                                Date = race.Date,
-                                Time = race.Time,
-                                CircuitId = race.Circuit.CircuitId,
-                                Circuit = circuit,
-                                Season = season,
-                                SeasonId = season.Year,
-                            };
-
-                            context.Races.Add(newRace);
-                        };
-
-                        await context.SaveChangesAsync();*/
-                    }
-
-                    else
-                    {
-                        Console.WriteLine("Error: drivers object is null");
-                    }
-                }
-                catch (Exception ex)
+                if (races != null && races.MRData != null && races.MRData.RaceTable.Races != null)
                 {
-                    Console.WriteLine("Error: " + ex.Message);
-                    Exception innerException = ex;
-                    while (innerException.InnerException != null)
+                    foreach (var apiRace in races.MRData.RaceTable.Races)
                     {
-                        innerException = innerException.InnerException;
+                        var newRace = new Race
+                        {
+                            raceName = apiRace.RaceName,
+                            Date = apiRace.Date,
+                            Time = apiRace.Time
+                        };
+
+                        // Establish foreign key relationship with Season
+                        newRace.SeasonId = int.Parse(year);
+
+                        if (circuitNameToIdMap.TryGetValue(apiRace.Circuit.CircuitName, out var circuitId))
+                        {
+                            newRace.CircuitId = circuitId;
+                        }
+
+                        context.Races.Add(newRace);
                     }
 
-                    Console.WriteLine("Error: " + innerException.Message);
+                    await context.SaveChangesAsync();
+                }
+                else
+                {
+                    Console.WriteLine("Error: race data is null or empty");
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error: " + ex.Message);
+                Exception innerException = ex;
+                while (innerException.InnerException != null)
+                {
+                    innerException = innerException.InnerException;
                 }
 
-
-
-
+                Console.WriteLine("Error: " + innerException.Message);
             }
         }
     }
+}
 }

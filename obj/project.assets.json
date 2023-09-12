@@ -425,18 +425,42 @@
           "lib/netstandard1.0/_._": {}
         }
       },
-      "Microsoft.OData.Edm/7.17.0": {
+      "Microsoft.OData.Edm/6.15.0": {
         "type": "package",
-        "dependencies": {
-          "System.Runtime.CompilerServices.Unsafe": "4.6.0",
-          "System.Text.Encodings.Web": "4.7.2",
-          "System.Text.Json": "4.6.0"
-        },
         "compile": {
-          "lib/netstandard2.0/Microsoft.OData.Edm.dll": {}
+          "lib/portable-net45+win+wpa81/Microsoft.OData.Edm.dll": {}
         },
         "runtime": {
-          "lib/netstandard2.0/Microsoft.OData.Edm.dll": {}
+          "lib/portable-net45+win+wpa81/Microsoft.OData.Edm.dll": {}
+        },
+        "resource": {
+          "lib/portable-net45+win+wpa81/de/Microsoft.OData.Edm.resources.dll": {
+            "locale": "de"
+          },
+          "lib/portable-net45+win+wpa81/es/Microsoft.OData.Edm.resources.dll": {
+            "locale": "es"
+          },
+          "lib/portable-net45+win+wpa81/fr/Microsoft.OData.Edm.resources.dll": {
+            "locale": "fr"
+          },
+          "lib/portable-net45+win+wpa81/it/Microsoft.OData.Edm.resources.dll": {
+            "locale": "it"
+          },
+          "lib/portable-net45+win+wpa81/ja/Microsoft.OData.Edm.resources.dll": {
+            "locale": "ja"
+          },
+          "lib/portable-net45+win+wpa81/ko/Microsoft.OData.Edm.resources.dll": {
+            "locale": "ko"
+          },
+          "lib/portable-net45+win+wpa81/ru/Microsoft.OData.Edm.resources.dll": {
+            "locale": "ru"
+          },
+          "lib/portable-net45+win+wpa81/zh-Hans/Microsoft.OData.Edm.resources.dll": {
+            "locale": "zh-Hans"
+          },
+          "lib/portable-net45+win+wpa81/zh-Hant/Microsoft.OData.Edm.resources.dll": {
+            "locale": "zh-Hant"
+          }
         }
       },
       "Microsoft.OpenApi/1.2.3": {
@@ -1876,24 +1900,6 @@
           "ref/netstandard1.3/System.Text.Encoding.Extensions.dll": {}
         }
       },
-      "System.Text.Encodings.Web/4.7.2": {
-        "type": "package",
-        "compile": {
-          "lib/netstandard2.1/System.Text.Encodings.Web.dll": {}
-        },
-        "runtime": {
-          "lib/netstandard2.1/System.Text.Encodings.Web.dll": {}
-        }
-      },
-      "System.Text.Json/4.6.0": {
-        "type": "package",
-        "compile": {
-          "lib/netcoreapp3.0/System.Text.Json.dll": {}
-        },
-        "runtime": {
-          "lib/netcoreapp3.0/System.Text.Json.dll": {}
-        }
-      },
       "System.Text.RegularExpressions/4.3.0": {
         "type": "package",
         "dependencies": {
@@ -2784,20 +2790,58 @@
         "runtime.json"
       ]
     },
-    "Microsoft.OData.Edm/7.17.0": {
-      "sha512": "E2S2Z1YK6LvEl1muUv5dCHDaaCHZ7JsM7cvmBFWA4hknm4+Iniz2rW+UjvNOOKUlvEXA337/DyLvFfdNAT7rcg==",
+    "Microsoft.OData.Edm/6.15.0": {
+      "sha512": "2BU7q29nOspEz9OxIrE1JooBypma1VhQw767gPi/PFy2lrJApn06NoG3uuSw4kraPorFfsxZJDtmbcxpVGUWNg==",
       "type": "package",
-      "path": "microsoft.odata.edm/7.17.0",
+      "path": "microsoft.odata.edm/6.15.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
-        "lib/net45/Microsoft.OData.Edm.dll",
-        "lib/net45/Microsoft.OData.Edm.xml",
-        "lib/netstandard1.1/Microsoft.OData.Edm.dll",
-        "lib/netstandard1.1/Microsoft.OData.Edm.xml",
-        "lib/netstandard2.0/Microsoft.OData.Edm.dll",
-        "lib/netstandard2.0/Microsoft.OData.Edm.xml",
-        "microsoft.odata.edm.7.17.0.nupkg.sha512",
+        "lib/dnx451/Microsoft.OData.Edm.dll",
+        "lib/dnx451/Microsoft.OData.Edm.xml",
+        "lib/dnx451/de/Microsoft.OData.Edm.resources.dll",
+        "lib/dnx451/es/Microsoft.OData.Edm.resources.dll",
+        "lib/dnx451/fr/Microsoft.OData.Edm.resources.dll",
+        "lib/dnx451/it/Microsoft.OData.Edm.resources.dll",
+        "lib/dnx451/ja/Microsoft.OData.Edm.resources.dll",
+        "lib/dnx451/ko/Microsoft.OData.Edm.resources.dll",
+        "lib/dnx451/ru/Microsoft.OData.Edm.resources.dll",
+        "lib/dnx451/zh-Hans/Microsoft.OData.Edm.resources.dll",
+        "lib/dnx451/zh-Hant/Microsoft.OData.Edm.resources.dll",
+        "lib/dnxcore50/Microsoft.OData.Edm.dll",
+        "lib/dnxcore50/Microsoft.OData.Edm.xml",
+        "lib/dnxcore50/de/Microsoft.OData.Edm.resources.dll",
+        "lib/dnxcore50/es/Microsoft.OData.Edm.resources.dll",
+        "lib/dnxcore50/fr/Microsoft.OData.Edm.resources.dll",
+        "lib/dnxcore50/it/Microsoft.OData.Edm.resources.dll",
+        "lib/dnxcore50/ja/Microsoft.OData.Edm.resources.dll",
+        "lib/dnxcore50/ko/Microsoft.OData.Edm.resources.dll",
+        "lib/dnxcore50/ru/Microsoft.OData.Edm.resources.dll",
+        "lib/dnxcore50/zh-Hans/Microsoft.OData.Edm.resources.dll",
+        "lib/dnxcore50/zh-Hant/Microsoft.OData.Edm.resources.dll",
+        "lib/portable-net40+sl5+wp8+win8+wpa/Microsoft.OData.Edm.dll",
+        "lib/portable-net40+sl5+wp8+win8+wpa/Microsoft.OData.Edm.xml",
+        "lib/portable-net40+sl5+wp8+win8+wpa/de/Microsoft.OData.Edm.resources.dll",
+        "lib/portable-net40+sl5+wp8+win8+wpa/es/Microsoft.OData.Edm.resources.dll",
+        "lib/portable-net40+sl5+wp8+win8+wpa/fr/Microsoft.OData.Edm.resources.dll",
+        "lib/portable-net40+sl5+wp8+win8+wpa/it/Microsoft.OData.Edm.resources.dll",
+        "lib/portable-net40+sl5+wp8+win8+wpa/ja/Microsoft.OData.Edm.resources.dll",
+        "lib/portable-net40+sl5+wp8+win8+wpa/ko/Microsoft.OData.Edm.resources.dll",
+        "lib/portable-net40+sl5+wp8+win8+wpa/ru/Microsoft.OData.Edm.resources.dll",
+        "lib/portable-net40+sl5+wp8+win8+wpa/zh-Hans/Microsoft.OData.Edm.resources.dll",
+        "lib/portable-net40+sl5+wp8+win8+wpa/zh-Hant/Microsoft.OData.Edm.resources.dll",
+        "lib/portable-net45+win+wpa81/Microsoft.OData.Edm.dll",
+        "lib/portable-net45+win+wpa81/Microsoft.OData.Edm.xml",
+        "lib/portable-net45+win+wpa81/de/Microsoft.OData.Edm.resources.dll",
+        "lib/portable-net45+win+wpa81/es/Microsoft.OData.Edm.resources.dll",
+        "lib/portable-net45+win+wpa81/fr/Microsoft.OData.Edm.resources.dll",
+        "lib/portable-net45+win+wpa81/it/Microsoft.OData.Edm.resources.dll",
+        "lib/portable-net45+win+wpa81/ja/Microsoft.OData.Edm.resources.dll",
+        "lib/portable-net45+win+wpa81/ko/Microsoft.OData.Edm.resources.dll",
+        "lib/portable-net45+win+wpa81/ru/Microsoft.OData.Edm.resources.dll",
+        "lib/portable-net45+win+wpa81/zh-Hans/Microsoft.OData.Edm.resources.dll",
+        "lib/portable-net45+win+wpa81/zh-Hant/Microsoft.OData.Edm.resources.dll",
+        "microsoft.odata.edm.6.15.0.nupkg.sha512",
         "microsoft.odata.edm.nuspec"
       ]
     },
@@ -6459,51 +6503,6 @@
         "system.text.encoding.extensions.nuspec"
       ]
     },
-    "System.Text.Encodings.Web/4.7.2": {
-      "sha512": "iTUgB/WtrZ1sWZs84F2hwyQhiRH6QNjQv2DkwrH+WP6RoFga2Q1m3f9/Q7FG8cck8AdHitQkmkXSY8qylcDmuA==",
-      "type": "package",
-      "path": "system.text.encodings.web/4.7.2",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "Icon.png",
-        "LICENSE.TXT",
-        "THIRD-PARTY-NOTICES.TXT",
-        "lib/net461/System.Text.Encodings.Web.dll",
-        "lib/net461/System.Text.Encodings.Web.xml",
-        "lib/netstandard1.0/System.Text.Encodings.Web.dll",
-        "lib/netstandard1.0/System.Text.Encodings.Web.xml",
-        "lib/netstandard2.0/System.Text.Encodings.Web.dll",
-        "lib/netstandard2.0/System.Text.Encodings.Web.xml",
-        "lib/netstandard2.1/System.Text.Encodings.Web.dll",
-        "lib/netstandard2.1/System.Text.Encodings.Web.xml",
-        "system.text.encodings.web.4.7.2.nupkg.sha512",
-        "system.text.encodings.web.nuspec",
-        "useSharedDesignerContext.txt",
-        "version.txt"
-      ]
-    },
-    "System.Text.Json/4.6.0": {
-      "sha512": "4F8Xe+JIkVoDJ8hDAZ7HqLkjctN/6WItJIzQaifBwClC7wmoLSda/Sv2i6i1kycqDb3hWF4JCVbpAweyOKHEUA==",
-      "type": "package",
-      "path": "system.text.json/4.6.0",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "LICENSE.TXT",
-        "THIRD-PARTY-NOTICES.TXT",
-        "lib/net461/System.Text.Json.dll",
-        "lib/net461/System.Text.Json.xml",
-        "lib/netcoreapp3.0/System.Text.Json.dll",
-        "lib/netcoreapp3.0/System.Text.Json.xml",
-        "lib/netstandard2.0/System.Text.Json.dll",
-        "lib/netstandard2.0/System.Text.Json.xml",
-        "system.text.json.4.6.0.nupkg.sha512",
-        "system.text.json.nuspec",
-        "useSharedDesignerContext.txt",
-        "version.txt"
-      ]
-    },
     "System.Text.RegularExpressions/4.3.0": {
       "sha512": "RpT2DA+L660cBt1FssIE9CAGpLFdFPuheB7pLpKpn6ZXNby7jDERe8Ua/Ne2xGiwLVG2JOqziiaVCGDon5sKFA==",
       "type": "package",
@@ -6969,7 +6968,7 @@
       "Microsoft.EntityFrameworkCore >= 6.0.15",
       "Microsoft.EntityFrameworkCore.SqlServer >= 6.0.15",
       "Microsoft.EntityFrameworkCore.Tools >= 6.0.15",
-      "Microsoft.OData.Edm >= 7.17.0",
+      "Microsoft.OData.Edm >= 6.15.0",
       "Newtonsoft.Json >= 13.0.3",
       "Swashbuckle.AspNetCore >= 6.2.3"
     ]
@@ -6980,11 +6979,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\PC\\source\\repos\\JsonToDbTest\\Diplomska\\JsonToDbTest\\JsonToDbTest.csproj",
+      "projectUniqueName": "C:\\Users\\PC\\source\\repos\\JsonToDbTest\\Diplomska\\JsonToDbTest.csproj",
       "projectName": "JsonToDbTest",
-      "projectPath": "C:\\Users\\PC\\source\\repos\\JsonToDbTest\\Diplomska\\JsonToDbTest\\JsonToDbTest.csproj",
+      "projectPath": "C:\\Users\\PC\\source\\repos\\JsonToDbTest\\Diplomska\\JsonToDbTest.csproj",
       "packagesPath": "C:\\Users\\PC\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\PC\\source\\repos\\JsonToDbTest\\Diplomska\\JsonToDbTest\\obj\\",
+      "outputPath": "C:\\Users\\PC\\source\\repos\\JsonToDbTest\\Diplomska\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\PC\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -7033,7 +7032,7 @@
           },
           "Microsoft.OData.Edm": {
             "target": "Package",
-            "version": "[7.17.0, )"
+            "version": "[6.15.0, )"
           },
           "Newtonsoft.Json": {
             "target": "Package",
@@ -7065,5 +7064,17 @@
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.301\\RuntimeIdentifierGraph.json"
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'Microsoft.OData.Edm 6.15.0' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.",
+      "libraryId": "Microsoft.OData.Edm",
+      "targetGraphs": [
+        "net6.0"
+      ]
+    }
+  ]
 }

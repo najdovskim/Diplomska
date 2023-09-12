@@ -8,10 +8,14 @@ namespace JsonToDbTest.Data
     {
         private readonly IConfiguration _configuration;
 
+        public DbSet<Circuit> Circuits { get; set; }
         public DataContext(DbContextOptions<DataContext> options)
             : base(options)
         {
+           //var circuitNameToIdMap =  context.Circuits.ToDictionaryAsync(c => c.CircuitName, c => c.CircuitId);
         }
+
+        
 
     /*  public DataContext(IConfiguration configuration)
         {
@@ -76,7 +80,7 @@ namespace JsonToDbTest.Data
 
 
 
-        public DbSet<Circuit> Circuits { get; set; }
+       
         public DbSet<Constructor> Constructors { get; set; }
         public DbSet<Driver> Drivers { get; set; }        
         public DbSet<DriverStanding> DriverStandings { get; set; }

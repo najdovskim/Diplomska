@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\PC\\source\\repos\\JsonToDbTest\\Diplomska\\JsonToDbTest\\JsonToDbTest.csproj": {}
+    "C:\\Users\\PC\\source\\repos\\JsonToDbTest\\Diplomska\\JsonToDbTest.csproj": {}
   },
   "projects": {
-    "C:\\Users\\PC\\source\\repos\\JsonToDbTest\\Diplomska\\JsonToDbTest\\JsonToDbTest.csproj": {
+    "C:\\Users\\PC\\source\\repos\\JsonToDbTest\\Diplomska\\JsonToDbTest.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\PC\\source\\repos\\JsonToDbTest\\Diplomska\\JsonToDbTest\\JsonToDbTest.csproj",
+        "projectUniqueName": "C:\\Users\\PC\\source\\repos\\JsonToDbTest\\Diplomska\\JsonToDbTest.csproj",
         "projectName": "JsonToDbTest",
-        "projectPath": "C:\\Users\\PC\\source\\repos\\JsonToDbTest\\Diplomska\\JsonToDbTest\\JsonToDbTest.csproj",
+        "projectPath": "C:\\Users\\PC\\source\\repos\\JsonToDbTest\\Diplomska\\JsonToDbTest.csproj",
         "packagesPath": "C:\\Users\\PC\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\PC\\source\\repos\\JsonToDbTest\\Diplomska\\JsonToDbTest\\obj\\",
+        "outputPath": "C:\\Users\\PC\\source\\repos\\JsonToDbTest\\Diplomska\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\PC\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -60,7 +60,7 @@
             },
             "Microsoft.OData.Edm": {
               "target": "Package",
-              "version": "[7.17.0, )"
+              "version": "[6.15.0, )"
             },
             "Newtonsoft.Json": {
               "target": "Package",
