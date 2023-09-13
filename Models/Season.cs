@@ -5,7 +5,8 @@ namespace JsonToDbTest.Models
 {
     public class Season
     {
-        [Key]        
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int SeasonId { get; set; }
         public List<Race> Races { get; set; }
         public List<DriverStanding> DriverStandings { get; set; }

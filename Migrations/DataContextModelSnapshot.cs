@@ -227,10 +227,7 @@ namespace JsonToDbTest.Migrations
             modelBuilder.Entity("JsonToDbTest.Models.Season", b =>
                 {
                     b.Property<int>("SeasonId")
-                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("SeasonId"), 1L, 1);
 
                     b.HasKey("SeasonId");
 

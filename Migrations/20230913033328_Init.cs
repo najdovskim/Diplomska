@@ -4,7 +4,7 @@
 
 namespace JsonToDbTest.Migrations
 {
-    public partial class init : Migration
+    public partial class Init : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -56,12 +56,11 @@ namespace JsonToDbTest.Migrations
                 name: "Seasons",
                 columns: table => new
                 {
-                    Year = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1")
+                    SeasonId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Seasons", x => x.Year);
+                    table.PrimaryKey("PK_Seasons", x => x.SeasonId);
                 });
 
             migrationBuilder.CreateTable(
@@ -96,7 +95,7 @@ namespace JsonToDbTest.Migrations
                         name: "FK_DriverStandings_Seasons_SeasonsId",
                         column: x => x.SeasonsId,
                         principalTable: "Seasons",
-                        principalColumn: "Year",
+                        principalColumn: "SeasonId",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -125,7 +124,7 @@ namespace JsonToDbTest.Migrations
                         name: "FK_Races_Seasons_SeasonId",
                         column: x => x.SeasonId,
                         principalTable: "Seasons",
-                        principalColumn: "Year",
+                        principalColumn: "SeasonId",
                         onDelete: ReferentialAction.Cascade);
                 });
 

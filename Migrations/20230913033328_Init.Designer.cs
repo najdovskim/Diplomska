@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace JsonToDbTest.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20230703201643_try")]
-    partial class @try
+    [Migration("20230913033328_Init")]
+    partial class Init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -229,10 +229,7 @@ namespace JsonToDbTest.Migrations
             modelBuilder.Entity("JsonToDbTest.Models.Season", b =>
                 {
                     b.Property<int>("SeasonId")
-                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("SeasonId"), 1L, 1);
 
                     b.HasKey("SeasonId");
 

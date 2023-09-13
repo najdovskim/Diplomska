@@ -13,5 +13,6 @@
         public CircuitTable CircuitTable { get; set; }
         public RaceTable RaceTable { get; set; }
         public SeasonTable SeasonTable { get; set; } 
+        public DriverStandingTable standingTable { get; set; }
     }
 }

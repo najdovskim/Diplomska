@@ -85,4 +85,45 @@ public class ErgastService
         var content = await response.Content.ReadAsStringAsync();
         return JsonConvert.DeserializeObject<SeasonRoot>(content);
     }
+    /*  public async Task<DriverStandingRoot> GetDriverStandings(string season)
+      {
+          if (string.IsNullOrWhiteSpace(season))
+          {
+              throw new ArgumentException("Season cannot be null or empty.", nameof(season));
+          }
+          var response = await _httpClient.GetAsync($"http://ergast.com/api/f1/{season}/1/driverStandings");
+          response.EnsureSuccessStatusCode();
+          var content = await response.Content.ReadAsStringAsync();
+          return JsonConvert.DeserializeObject<DriverStandingRoot>(content);
+      }*/
+
+    /* private async Task<DriverStandingRoot> GetDriverStandingsAsync(string season, int raceNumber)
+     {
+         try
+         {
+             var response = await _httpClient.GetAsync($"http://ergast.com/api/f1/{season}/{raceNumber}/driverStandings");
+             response.EnsureSuccessStatusCode();
+             var content = await response.Content.ReadAsStringAsync();
+             return JsonConvert.DeserializeObject<DriverStandingRoot>(content);
+         }
+         catch (Exception ex)
+         {
+             Console.WriteLine($"Error fetching data for race {raceNumber}: {ex.Message}");
+             return null;
+         }
+     }*/
+
+    public async Task<DriverStandingRoot> GetDriverStandings(string season, int round)
+    {
+        if (string.IsNullOrWhiteSpace(season))
+        {
+            throw new ArgumentException("Season cannot be null or empty.", nameof(season));
+        }
+
+        var response = await _httpClient.GetAsync($"http://ergast.com/api/f1/{season}/{round}/driverStandings.json");
+        response.EnsureSuccessStatusCode();
+        var content = await response.Content.ReadAsStringAsync();
+        return JsonConvert.DeserializeObject<DriverStandingRoot>(content);
+    }
+ 
 }

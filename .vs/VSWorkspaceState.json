@@ -1,11 +1,8 @@
 {
   "ExpandedNodes": [
     "",
-    "\\Data",
-    "\\Models",
-    "\\RootTable",
-    "\\Services"
+    "\\Data"
   ],
-  "SelectedNode": "\\JsonToDbTest.sln",
+  "SelectedNode": "\\Diplomska.sln",
   "PreviewInSolutionExplorer": false
 }
