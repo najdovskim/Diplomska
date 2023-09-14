@@ -23,12 +23,12 @@ namespace Diplomska.Service.Services
         }
 
 
-        public async Task<List<CircuitGetDto>> GetAllCircuits()
+        public async Task<List<Circuit>> GetAllCircuits()
         {
             var circuits = await _fromula1Repository.GetAllCircuits();
-            var circuitsGet = _mapper.Map<List<CircuitGetDto>>(circuits);
+            //var circuitsGet = _mapper.Map<List<CircuitGetDto>>(circuits);
 
-            return circuitsGet;
+            return circuits;
         }
 
         public async Task<List<ConstructorGetDto>> GetAllConstructors()
