@@ -16,7 +16,7 @@ namespace Diplomska.Dal.Data
         public SeedData(DataContext data) => _data = data;
 
 
-        public static async Task InitializeAsync(IServiceProvider serviceProvider)
+        public async Task InitializeAsync(IServiceProvider serviceProvider)
         {
 
             var httpClient = new HttpClient();
@@ -33,6 +33,12 @@ namespace Diplomska.Dal.Data
 
             using (var context = serviceProvider.GetRequiredService<DataContext>())
             {
+                await SeedCircuitData(context, ergastService);
+                await SeedDriversData(context, ergastService);
+                await SeedConstructorData(context, ergastService);
+                await SeedSeasonData(context, ergastService);
+                await SeedRaceData(context, ergastService);
+            
                 /*try
                 {
                     int seasonYear = 2020;
@@ -85,245 +91,152 @@ namespace Diplomska.Dal.Data
                     }
 
                     Console.WriteLine("Error: " + innerException.Message);
-                }*/
+                }*/           
 
-
-
-                /*
-                try
-                 {
-                     //works
-                     // Assuming you have already seeded other data, if not, you can add it here.
-
-                     // Create seasons from 1950 to 2023
-                     for (int year = 1950; year <= 2023; year++)
-                     {
-                         var newSeason = new Season
-                         {
-                             SeasonId = year
-                         };
-
-                         context.Seasons.Add(newSeason);
-                     }
-
-                     await context.SaveChangesAsync();
-
-                     // Rest of your code for other data seeding...
-
-                 }
-                 catch (Exception ex)
-                 {
-                     Console.WriteLine("Error: " + ex.Message);
-                     Exception innerException = ex;
-                     while (innerException.InnerException != null)
-                     {
-                         innerException = innerException.InnerException;
-                     }
-
-                     Console.WriteLine("Error: " + innerException.Message);
-                 }
-                 */
-
-
-                try
-                {
-
-                 //works Driver
-
-    /*              var drivers = await ergastService.GetDriversAsync("2020");
-
-                    if (drivers != null && drivers.MRData != null && drivers.MRData.DriverTable.Drivers != null) // && drivers.MRData.ConstructorTable != null)
-                    {
-                        if (drivers.MRData.DriverTable.Drivers != null)
-                        {
-                            foreach (var driver in drivers.MRData.DriverTable.Drivers)
-                            {
-                                var newDriver = new Driver
-                                {
-                                    DriverId = driver.DriverId,
-                                    PermanentNumber = driver.PermanentNumber,
-                                    Code = driver.Code,
-                                    GivenName = driver.GivenName,
-                                    FamilyName = driver.FamilyName,
-                                    Nationality = driver.Nationality,
-                                    DateOfBirth = driver.DateOfBirth,
-
-                                    Url = driver.Url
-
-                                };
-
-                                context.Drivers.Add(newDriver);
-                            }
-
-                            await context.SaveChangesAsync();
-                        }
-                        else
-                        {
-                            Console.WriteLine("Error: drivers object is null");
-                        }
-                    }
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine("Error: " + ex.Message);
-                } */
-
-
-
-                //works Circuit
-                // Null insert in table
-                     var circuits = await ergastService.GetCircuitsAsync("2020");
-
-                      if (circuits != null && circuits.MRData != null && circuits.MRData.CircuitTable.Circuits != null)
-                      {
-                          foreach (var circuit in circuits.MRData.CircuitTable.Circuits)
-                          {
-                              var newCircuit = new Circuit
-                              {
-                                  CircuitId = circuit.CircuitId,
-                                  CircuitName = circuit.CircuitName                            
-                              };
-
-                              context.Circuits.Add(newCircuit);
-                          }
-
-                          await context.SaveChangesAsync();
-                      }
-                      else
-                      {
-                          Console.WriteLine("Error: drivers object is null");
-                      }
-                  }        
-
-
-                  catch (Exception ex)
-                  {
-                      Console.WriteLine("Error: " + ex.Message);
-                  }
-
-
-                //works
-                /*
-                   var constructors = await ergastService.GetConstructorsAsync("2020");
-
-                    if (constructors != null && constructors.MRData.ConstructorTable.Constructors != null)
-                    {
-                        foreach (var constructor in constructors.MRData.ConstructorTable.Constructors)
-                        {
-                            var newConstructor = new Constructor
-                            {
-                                ConstructorId = constructor.ConstructorId,
-                                Name = constructor.Name,
-                                Nationality = constructor.Nationality,
-                                Url = constructor.Url
-
-                            };
-
-                            context.Constructors.Add(newConstructor);
-                        }
-
-                        await context.SaveChangesAsync();
-                    }
-                    else
-                    {
-                        Console.WriteLine("Error: constructors object is null");
-                    }
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine("Error: " + ex.Message);
-                } */
-
-
-
-                /*                    var seasons = await ergastService.GetSeasonsAsync();
-                                    Console.WriteLine(seasons);
-
-                                    if (seasons != null && seasons.MRData != null && seasons.MRData.SeasonTable.Seasons != null)
-                                    {
-                                        foreach (var season in seasons.MRData.SeasonTable.Seasons)
-                                        {
-                                            var newSeason = new Season
-                                            {
-                                                RaceId = race.RaceId,
-                                                raceName = race.raceName,
-                                                Date = race.Date,
-                                                Time = race.Time,
-                                                //SeasonId = int.Parse("2020"),
-                                            };
-
-                                            context.Seasons.Add(newSeason);
-                                        }
-
-                                        await context.SaveChangesAsync();
-                                    }
-
-
-                                    else
-                                    {
-                                        Console.WriteLine("Error: drivers object is null");
-                                    }
-                                }
-                                catch (Exception ex)
-                                {
-                                    Console.WriteLine("Error: " + ex.Message);
-                                }
-                */
-
-
-                //works
-
-                /* var year = "2020";
-                 var races = await ergastService.GetRacesAsync(year); 
-                 //var GetSeasonId = await _data.
-
-                 // Retrieve existing circuits and create a dictionary to map names to IDs
-                 var circuitNameToIdMap = await context.Circuits.ToDictionaryAsync(c => c.CircuitName, c => c.CircuitId);
-
-                 if (races != null && races.MRData != null && races.MRData.RaceTable.Races != null)
-                 {
-                     foreach (var apiRace in races.MRData.RaceTable.Races)
-                     {
-                         var newRace = new Race
-                         {
-                             raceName = apiRace.RaceName,
-                             Date = apiRace.Date,
-                             Time = apiRace.Time
-                         };
-
-                         // Establish foreign key relationship with Season
-                         newRace.SeasonId = int.Parse(year);
-
-                         if (circuitNameToIdMap.TryGetValue(apiRace.Circuit.CircuitName, out var circuitId))
-                         {
-                             newRace.CircuitId = circuitId;
-                         }
-
-                         context.Races.Add(newRace);
-                     }
-
-                     await context.SaveChangesAsync();
-                 }
-                 else
-                 {
-                     Console.WriteLine("Error: race data is null or empty");
-                 }
-             }
-             catch (Exception ex)
-             {
-                 Console.WriteLine("Error: " + ex.Message);
-                 Exception innerException = ex;
-                 while (innerException.InnerException != null)
-                 {
-                     innerException = innerException.InnerException;
-                 }
-
-                 Console.WriteLine("Error: " + innerException.Message);
-             } */
-
+               
 
 
             }
         }
+
+        private async Task SeedDriversData(DataContext context, ErgastService ergastService)
+        {
+            var drivers = await ergastService.GetDriversAsync("2020");
+
+            if (drivers != null && drivers.MRData != null && drivers.MRData.DriverTable.Drivers != null)
+            {
+                if (drivers.MRData.DriverTable.Drivers != null)
+                {
+                    foreach (var driver in drivers.MRData.DriverTable.Drivers)
+                    {
+                        var newDriver = new Driver
+                        {
+                            DriverId = driver.DriverId,
+                            PermanentNumber = driver.PermanentNumber,
+                            Code = driver.Code,
+                            GivenName = driver.GivenName,
+                            FamilyName = driver.FamilyName,
+                            Nationality = driver.Nationality,
+                            DateOfBirth = driver.DateOfBirth,
+                            Url = driver.Url
+                        };
+
+                        context.Drivers.Add(newDriver);
+                    }
+
+                    await context.SaveChangesAsync();
+                }
+                else
+                {
+                    Console.WriteLine("Error: drivers object is null");
+                }
+            }
+        }
+        private async Task SeedConstructorData(DataContext context, ErgastService ergastService)
+        {
+            var constructors = await ergastService.GetConstructorsAsync("2020");
+
+            if (constructors != null && constructors.MRData.ConstructorTable.Constructors != null)
+            {
+                foreach (var constructor in constructors.MRData.ConstructorTable.Constructors)
+                {
+                    var newConstructor = new Constructor
+                    {
+                        ConstructorId = constructor.ConstructorId,
+                        Name = constructor.Name,
+                        Nationality = constructor.Nationality,
+                        Url = constructor.Url
+
+                    };
+
+                    context.Constructors.Add(newConstructor);
+                }
+
+                await context.SaveChangesAsync();
+            }
+            else
+            {
+                Console.WriteLine("Error: constructors object is null");
+            }
+        }
+
+        private async Task SeedRaceData(DataContext context, ErgastService ergastService)
+        {
+            var year = "2020";
+            var races = await ergastService.GetRacesAsync(year);
+            //var GetSeasonId = await _data.
+
+            // Retrieve existing circuits and create a dictionary to map names to IDs
+            var circuitNameToIdMap = await context.Circuits.ToDictionaryAsync(c => c.CircuitName, c => c.CircuitId);
+
+            if (races != null && races.MRData != null && races.MRData.RaceTable.Races != null)
+            {
+                foreach (var apiRace in races.MRData.RaceTable.Races)
+                {
+                    var newRace = new Race
+                    {
+                        raceName = apiRace.RaceName,
+                        Date = apiRace.Date,
+                        Time = apiRace.Time
+                    };
+
+                    // Establish foreign key relationship with Season
+                    newRace.SeasonId = int.Parse(year);
+
+                    if (circuitNameToIdMap.TryGetValue(apiRace.Circuit.CircuitName, out var circuitId))
+                    {
+                        newRace.CircuitId = circuitId;
+                    }
+
+                    context.Races.Add(newRace);
+                }
+
+                await context.SaveChangesAsync();
+            }
+            else
+            {
+                Console.WriteLine("Error: race data is null or empty");
+            }
+        }
+        private async Task SeedSeasonData(DataContext context, ErgastService ergastService)
+        {
+            for (int year = 1950; year <= 2023; year++)
+            {
+                var newSeason = new Season
+                {
+                    SeasonId = year
+                };
+
+                context.Seasons.Add(newSeason);
+            }
+
+            await context.SaveChangesAsync();
+        }
+
+        private async Task SeedCircuitData(DataContext context, ErgastService ergastService)
+        {
+            var circuits = await ergastService.GetCircuitsAsync("2020");
+
+            if (circuits != null && circuits.MRData != null && circuits.MRData.CircuitTable.Circuits != null)
+            {
+                foreach (var circuit in circuits.MRData.CircuitTable.Circuits)
+                {
+                    var newCircuit = new Circuit
+                    {
+                        CircuitId = circuit.CircuitId,
+                        CircuitName = circuit.CircuitName
+                    };
+
+                    context.Circuits.Add(newCircuit);
+                }
+
+                await context.SaveChangesAsync();
+            }
+            else
+            {
+                Console.WriteLine("Error: drivers object is null");
+            }
+        }
     }
+
 }
