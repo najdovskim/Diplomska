@@ -33,13 +33,13 @@ namespace Diplomska.Dal.Data
 
             using (var context = serviceProvider.GetRequiredService<DataContext>())
             {
-                await SeedCircuitData(context, ergastService);
+                /*await SeedCircuitData(context, ergastService);
                 await SeedDriversData(context, ergastService);
                 await SeedConstructorData(context, ergastService);
                 await SeedSeasonData(context, ergastService);
-                await SeedRaceData(context, ergastService);
+                await SeedRaceData(context, ergastService);*/
             
-                /*try
+                try
                 {
                     int seasonYear = 2020;
                     int raceRound = 1;
@@ -50,10 +50,10 @@ namespace Diplomska.Dal.Data
 
                     // Check if the response contains the expected data structure                        
                     if (standingsData == null || standingsData.MRData == null || standingsData.MRData.standingTable == null) //standingTable is NULL
-                    {
-                        // Log the issue and decide how to proceed
+                    {                        
                         Console.WriteLine("API response does not contain expected data structure.");
-                        // Exit the loop or handle this case as needed
+                        Console.WriteLine(standingsData);
+                        
                     }
 
                     // Save driver standings data to the database
@@ -70,7 +70,7 @@ namespace Diplomska.Dal.Data
                             positionText = driverStanding.positionText,
                             Points = driverStanding.Points,
                             Wins = driverStanding.Wins,
-                            SeasonsId = seasonYear, // Assuming SeasonsId represents the season year
+                            SeasonsId = seasonYear, 
                             DriverId = driverStanding.Driver.DriverId,
                             ConstructorId = driverStanding.Constructor.ConstructorId
                         };
@@ -91,7 +91,7 @@ namespace Diplomska.Dal.Data
                     }
 
                     Console.WriteLine("Error: " + innerException.Message);
-                }*/           
+                }           
 
                
 
