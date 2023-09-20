@@ -155,3 +155,4 @@ C:\Users\PC\source\repos\JsonToDbTest\Diplomska\Diplomska.API\obj\Debug\net6.0\r
 C:\Users\PC\source\repos\JsonToDbTest\Diplomska\Diplomska.API\obj\Debug\net6.0\Diplomska.API.pdb
 C:\Users\PC\source\repos\JsonToDbTest\Diplomska\Diplomska.API\obj\Debug\net6.0\Diplomska.API.genruntimeconfig.cache
 C:\Users\PC\source\repos\JsonToDbTest\Diplomska\Diplomska.API\obj\Debug\net6.0\ref\Diplomska.API.dll
+C:\Users\PC\source\repos\JsonToDbTest\Diplomska\Diplomska.API\obj\Debug\net6.0\Diplomska.API.MvcApplicationPartsAssemblyInfo.cs

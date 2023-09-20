@@ -237,7 +237,7 @@ namespace Diplomska.Dal.Migrations
 
             modelBuilder.Entity("Diplomska.Domain.Models.DriverStanding", b =>
                 {
-                    b.HasOne("Diplomska.Domain.Models.Constructor", "Constructor")
+                    b.HasOne("Diplomska.Domain.Models.Constructor", "Constructors")
                         .WithMany("DriverStandings")
                         .HasForeignKey("ConstructorId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -255,7 +255,7 @@ namespace Diplomska.Dal.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Constructor");
+                    b.Navigation("Constructors");
 
                     b.Navigation("Driver");
 

@@ -62,7 +62,7 @@ namespace Diplomska.Dal
 
             // configure one-to-many relationship between DriverStanding and Constructor
             modelBuilder.Entity<DriverStanding>()
-                .HasOne(ds => ds.Constructor)
+                .HasOne(ds => ds.Constructors)
                 .WithMany(d => d.DriverStandings)
                 .HasForeignKey(ds => ds.ConstructorId);
 

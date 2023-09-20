@@ -24,6 +24,6 @@ namespace Diplomska.Domain.Models
 
         [ForeignKey("ConstructorId")]
         public string ConstructorId { get; set; }
-        public Constructor Constructor { get; set; }
+        public Constructor Constructors { get; set; }
     }
 }

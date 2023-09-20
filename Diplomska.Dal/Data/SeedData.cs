@@ -28,7 +28,7 @@ namespace Diplomska.Dal.Data
 
             using (var context = serviceProvider.GetRequiredService<DataContext>())
             {
-              /*  await SeedCircuitData(context, ergastService);
+                /*await SeedCircuitData(context, ergastService);
                 await SeedDriversData(context, ergastService);
                 await SeedConstructorData(context, ergastService);
                 await SeedSeasonData(context, ergastService);
@@ -36,7 +36,7 @@ namespace Diplomska.Dal.Data
             
                try
                 {
-                    int seasonYear = 2020;
+                    var seasonYear = 2020;
                     int raceRound = 1;
 
 
@@ -65,11 +65,13 @@ namespace Diplomska.Dal.Data
                             positionText = driverStanding.positionText,
                             Points = driverStanding.Points,
                             Wins = driverStanding.Wins,
-                            SeasonsId = seasonYear,
+                            SeasonsId = seasonYear,                           
                             DriverId = driverStanding.Driver?.DriverId,
-                            ConstructorId = driverStanding.Constructor?.ConstructorId
+                            ConstructorId = driverStanding.Constructors?.ConstructorId
 
                         };
+
+                        //newDriverStanding.SeasonsId = seasonYear;
 
                         context.DriverStandings.Add(newDriverStanding);
                     }
@@ -87,7 +89,7 @@ namespace Diplomska.Dal.Data
                     }
 
                     Console.WriteLine("Error: " + innerException.Message);
-                }           
+                }          
 
                
 

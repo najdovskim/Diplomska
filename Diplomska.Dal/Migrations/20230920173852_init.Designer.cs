@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Diplomska.Dal.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20230918193134_Init")]
-    partial class Init
+    [Migration("20230920173852_init")]
+    partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -239,7 +239,7 @@ namespace Diplomska.Dal.Migrations
 
             modelBuilder.Entity("Diplomska.Domain.Models.DriverStanding", b =>
                 {
-                    b.HasOne("Diplomska.Domain.Models.Constructor", "Constructor")
+                    b.HasOne("Diplomska.Domain.Models.Constructor", "Constructors")
                         .WithMany("DriverStandings")
                         .HasForeignKey("ConstructorId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -257,7 +257,7 @@ namespace Diplomska.Dal.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Constructor");
+                    b.Navigation("Constructors");
 
                     b.Navigation("Driver");
 
