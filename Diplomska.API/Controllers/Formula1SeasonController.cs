@@ -92,7 +92,7 @@ namespace Diplomska.API.Controllers
 
         [HttpGet]
         [Route("{driverStandingId}")]
-        public async Task<IActionResult> GetDriverStandingById(int driverStandingId)
+        public async Task<IActionResult> GetDriverStandingById(string driverStandingId)
         {
             var driverStanding = await _formula1Service.GetDriverStandingById(driverStandingId);
             if (driverStanding.Equals(null))

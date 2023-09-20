@@ -19,7 +19,7 @@ namespace Diplomska.Dal.Interfaces
         Task<Driver> GetDriverById(string driverId);
 
         Task<List<DriverStanding>> GetAllDriverStandings();
-        Task<DriverStanding> GetDriverStandingById(int driverStandingId);
+        Task<DriverStanding> GetDriverStandingById(string driverStandingId);
 
         Task<List<Race>> GetAllRaces();
         Task<Race> GetRaceById(int raceId);

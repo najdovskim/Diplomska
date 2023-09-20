@@ -85,7 +85,7 @@ namespace Diplomska.Dal.Repository
             return driver;
         }
 
-        public async Task<DriverStanding> GetDriverStandingById(int driverStandingId)
+        public async Task<DriverStanding> GetDriverStandingById(string driverStandingId)
         {
             var driverStanding = await _ctx.DriverStandings.FirstOrDefaultAsync(c => c.Position == driverStandingId);
 

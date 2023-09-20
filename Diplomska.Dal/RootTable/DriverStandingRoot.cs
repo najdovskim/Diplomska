@@ -9,6 +9,15 @@ namespace Diplomska.Dal.RootTable
 
     public class DriverStandingTable
     {
-        public List<DriverStanding> DriverStandings { get; set; }
+        public List<Standingslist> StandingsLists { get; set; }
     }
+
+  /*  public class Standingstable
+    {
+        public string season { get; set; }
+        public string round { get; set; }
+        public Standingslist[] StandingsLists { get; set; }
+    }
+   */     
+
 }

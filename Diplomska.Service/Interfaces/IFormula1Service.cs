@@ -20,7 +20,7 @@ namespace Diplomska.Service.Interfaces
         Task<DriverGetDto> GetDriverById(string driverId);
 
         Task<List<DriverStandingGetDto>> GetAllDriverStandings();
-        Task<DriverStandingGetDto> GetDriverStandingById(int driverStandingId);
+        Task<DriverStandingGetDto> GetDriverStandingById(string driverStandingId);
 
         Task<List<RaceGetDto>> GetAllRaces();
         Task<RaceGetDto> GetRaceById(int raceId);

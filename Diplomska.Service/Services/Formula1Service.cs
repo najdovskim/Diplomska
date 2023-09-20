@@ -119,7 +119,7 @@ namespace Diplomska.Service.Services
             return mapped;
         }
 
-        public async Task<DriverStandingGetDto> GetDriverStandingById(int driverStandingId)
+        public async Task<DriverStandingGetDto> GetDriverStandingById(string driverStandingId)
         {
             var driverStanding = await _fromula1Repository.GetDriverStandingById(driverStandingId);
 

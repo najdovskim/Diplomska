@@ -9,10 +9,10 @@ namespace Diplomska.Domain.Models
     {
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Key]
-        public int Position { get; set; }
-        public int positionText { get; set; }
-        public int Points { get; set; }
-        public int Wins { get; set; }
+        public string Position { get; set; }
+        public string positionText { get; set; }
+        public string Points { get; set; }
+        public string Wins { get; set; }
 
         [ForeignKey("Season")]
         public int SeasonsId { get; set; }

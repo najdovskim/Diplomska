@@ -77,6 +77,12 @@ C:\Users\PC\source\repos\Diplomska\Diplomska.API\bin\Debug\net6.0\AutoMapper.Ext
 C:\Users\PC\source\repos\Diplomska\Diplomska.API\bin\Debug\net6.0\Diplomska.Service.dll
 C:\Users\PC\source\repos\Diplomska\Diplomska.API\bin\Debug\net6.0\Diplomska.Service.pdb
 C:\Users\PC\source\repos\Diplomska\Diplomska.API\bin\Debug\net6.0\FluentAssertions.dll
+C:\Users\PC\source\repos\JsonToDbTest\Diplomska\Diplomska.API\obj\Debug\net6.0\Diplomska.API.csproj.AssemblyReference.cache
+C:\Users\PC\source\repos\JsonToDbTest\Diplomska\Diplomska.API\obj\Debug\net6.0\Diplomska.API.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\PC\source\repos\JsonToDbTest\Diplomska\Diplomska.API\obj\Debug\net6.0\Diplomska.API.AssemblyInfoInputs.cache
+C:\Users\PC\source\repos\JsonToDbTest\Diplomska\Diplomska.API\obj\Debug\net6.0\Diplomska.API.AssemblyInfo.cs
+C:\Users\PC\source\repos\JsonToDbTest\Diplomska\Diplomska.API\obj\Debug\net6.0\Diplomska.API.csproj.CoreCompileInputs.cache
+C:\Users\PC\source\repos\JsonToDbTest\Diplomska\Diplomska.API\obj\Debug\net6.0\Diplomska.API.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\PC\source\repos\JsonToDbTest\Diplomska\Diplomska.API\bin\Debug\net6.0\appsettings.Development.json
 C:\Users\PC\source\repos\JsonToDbTest\Diplomska\Diplomska.API\bin\Debug\net6.0\appsettings.json
 C:\Users\PC\source\repos\JsonToDbTest\Diplomska\Diplomska.API\bin\Debug\net6.0\Diplomska.API.exe
@@ -140,13 +146,6 @@ C:\Users\PC\source\repos\JsonToDbTest\Diplomska\Diplomska.API\bin\Debug\net6.0\D
 C:\Users\PC\source\repos\JsonToDbTest\Diplomska\Diplomska.API\bin\Debug\net6.0\Diplomska.Dal.pdb
 C:\Users\PC\source\repos\JsonToDbTest\Diplomska\Diplomska.API\bin\Debug\net6.0\Diplomska.Service.pdb
 C:\Users\PC\source\repos\JsonToDbTest\Diplomska\Diplomska.API\bin\Debug\net6.0\Diplomska.Domain.pdb
-C:\Users\PC\source\repos\JsonToDbTest\Diplomska\Diplomska.API\obj\Debug\net6.0\Diplomska.API.csproj.AssemblyReference.cache
-C:\Users\PC\source\repos\JsonToDbTest\Diplomska\Diplomska.API\obj\Debug\net6.0\Diplomska.API.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\PC\source\repos\JsonToDbTest\Diplomska\Diplomska.API\obj\Debug\net6.0\Diplomska.API.AssemblyInfoInputs.cache
-C:\Users\PC\source\repos\JsonToDbTest\Diplomska\Diplomska.API\obj\Debug\net6.0\Diplomska.API.AssemblyInfo.cs
-C:\Users\PC\source\repos\JsonToDbTest\Diplomska\Diplomska.API\obj\Debug\net6.0\Diplomska.API.csproj.CoreCompileInputs.cache
-C:\Users\PC\source\repos\JsonToDbTest\Diplomska\Diplomska.API\obj\Debug\net6.0\Diplomska.API.MvcApplicationPartsAssemblyInfo.cs
-C:\Users\PC\source\repos\JsonToDbTest\Diplomska\Diplomska.API\obj\Debug\net6.0\Diplomska.API.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\PC\source\repos\JsonToDbTest\Diplomska\Diplomska.API\obj\Debug\net6.0\staticwebassets.build.json
 C:\Users\PC\source\repos\JsonToDbTest\Diplomska\Diplomska.API\obj\Debug\net6.0\staticwebassets.development.json
 C:\Users\PC\source\repos\JsonToDbTest\Diplomska\Diplomska.API\obj\Debug\net6.0\scopedcss\bundle\Diplomska.API.styles.css

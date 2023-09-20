@@ -4,7 +4,7 @@
 
 namespace Diplomska.Dal.Migrations
 {
-    public partial class init : Migration
+    public partial class Init : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -67,11 +67,10 @@ namespace Diplomska.Dal.Migrations
                 name: "DriverStandings",
                 columns: table => new
                 {
-                    Position = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    positionText = table.Column<int>(type: "int", nullable: false),
-                    Points = table.Column<int>(type: "int", nullable: false),
-                    Wins = table.Column<int>(type: "int", nullable: false),
+                    Position = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    positionText = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Points = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Wins = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     SeasonsId = table.Column<int>(type: "int", nullable: false),
                     DriverId = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     ConstructorId = table.Column<string>(type: "nvarchar(450)", nullable: false)

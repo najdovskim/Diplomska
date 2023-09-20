@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Net.Http;
-using System.Threading.Tasks;
-using Diplomska.Domain.Models;
+﻿using Diplomska.Domain.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Newtonsoft.Json;
 
 namespace Diplomska.Dal.Data
 {
@@ -33,13 +28,13 @@ namespace Diplomska.Dal.Data
 
             using (var context = serviceProvider.GetRequiredService<DataContext>())
             {
-                /*await SeedCircuitData(context, ergastService);
+              /*  await SeedCircuitData(context, ergastService);
                 await SeedDriversData(context, ergastService);
                 await SeedConstructorData(context, ergastService);
                 await SeedSeasonData(context, ergastService);
                 await SeedRaceData(context, ergastService);*/
             
-                try
+               try
                 {
                     int seasonYear = 2020;
                     int raceRound = 1;
@@ -49,7 +44,7 @@ namespace Diplomska.Dal.Data
                     var standingsData = await ergastService.GetDriverStandings(season, raceRound);
 
                     // Check if the response contains the expected data structure                        
-                    if (standingsData == null || standingsData.MRData == null || standingsData.MRData.standingTable == null) //standingTable is NULL
+                    if (standingsData == null || standingsData.MRData == null || standingsData.MRData.StandingsTable == null) //standingTable is NULL
                     {                        
                         Console.WriteLine("API response does not contain expected data structure.");
                         Console.WriteLine(standingsData);
@@ -57,7 +52,7 @@ namespace Diplomska.Dal.Data
                     }
 
                     // Save driver standings data to the database
-                    foreach (var driverStanding in standingsData.MRData.standingTable.DriverStandings)
+                    foreach (var driverStanding in standingsData.MRData.StandingsTable.StandingsLists.FirstOrDefault().DriverStandings)
                     {
                         raceRound++;
                         if (driverStanding == null)
@@ -65,14 +60,15 @@ namespace Diplomska.Dal.Data
                             break;
                         }
                         var newDriverStanding = new DriverStanding
-                        {
+                        {   
                             Position = driverStanding.Position,
                             positionText = driverStanding.positionText,
                             Points = driverStanding.Points,
                             Wins = driverStanding.Wins,
-                            SeasonsId = seasonYear, 
-                            DriverId = driverStanding.Driver.DriverId,
-                            ConstructorId = driverStanding.Constructor.ConstructorId
+                            SeasonsId = seasonYear,
+                            DriverId = driverStanding.Driver?.DriverId,
+                            ConstructorId = driverStanding.Constructor?.ConstructorId
+
                         };
 
                         context.DriverStandings.Add(newDriverStanding);
