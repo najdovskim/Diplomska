@@ -20,7 +20,5 @@ namespace Diplomska.Service.Interfaces
         Task<List<ResultGetDto>> GetAllResults();
         Task<ResultGetDto> GetResultById(int resultId);
 
-        Task<List<SeasonGetDto>> GetAllSeasons();
-        Task<SeasonGetDto> GetSeasonById(int seasonId);
     }
 }

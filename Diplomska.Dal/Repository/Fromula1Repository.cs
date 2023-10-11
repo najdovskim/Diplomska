@@ -33,12 +33,7 @@ namespace Diplomska.Dal.Repository
         {
             return await _ctx.Results.ToListAsync();
         }
-
-        public async Task<List<Season>> GetAllSeasons()
-        {
-            return await _ctx.Seasons.ToListAsync();
-        }     
-      
+            
 
         public async Task<DriverStanding> GetDriverStandingById(string driverStandingId)
         {
@@ -67,17 +62,8 @@ namespace Diplomska.Dal.Repository
             if (result == null)
                 return null;
 
-            return result;
+            return result;    
         }
-
-        public async Task<Season> GetSeasonById(int seasonId)
-        {
-            var season = await _ctx.Seasons.FirstOrDefaultAsync(c => c.SeasonId == seasonId);
-
-            if (season == null)
-                return null;
-
-            return season;
-        }
+      
     }
 }

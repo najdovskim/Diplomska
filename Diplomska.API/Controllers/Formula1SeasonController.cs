@@ -76,27 +76,5 @@ namespace Diplomska.API.Controllers
             return Ok(result);
         }
 
-
-        //Season Get
-        [HttpGet]
-        [Route("{season}")]
-        public async Task<IActionResult> GetAllSeasonStanding()
-        {
-            var seasons = await _formula1Service.GetAllSeasons();
-            return Ok(seasons);
-        }
-
-        [HttpGet]
-        [Route("{seasonId}")]
-        public async Task<IActionResult> GetSeasonById(int seasonId)
-        {
-            var season = await _formula1Service.GetSeasonById(seasonId);
-            if (season.Equals(null))
-                return NotFound("Item not found");
-
-            return Ok(season);
-        }
-
-
     }
 }
