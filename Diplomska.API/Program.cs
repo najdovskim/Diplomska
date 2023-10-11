@@ -15,7 +15,12 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 var cs = builder.Configuration.GetConnectionString("Default");
-builder.Services.AddDbContext<DataContext>(options => { options.UseSqlServer(cs); });
+builder.Services.AddDbContext<DataContext>(options => {
+    options.UseSqlServer(cs);
+    options.UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking);
+});
+
+
 
 var mappingConfig = new MapperConfiguration(mc =>
 {
@@ -35,6 +40,15 @@ builder.Services.AddAutoMapper(typeof(Program).Assembly);
 builder.Services.AddScoped<IFromula1Repository, Fromula1Repository>();
 builder.Services.AddScoped<IFormula1Service, Formula1Service>();
 builder.Services.AddScoped<SeedData>();
+
+builder.Services.AddCors(p => p.AddPolicy("corsapp", builder =>
+{
+    builder.WithOrigins("*").AllowAnyMethod().AllowAnyHeader();
+}));
+
+
+
+
 
 var app = builder.Build();
 
@@ -66,15 +80,17 @@ using (var scope = app.Services.CreateScope())
         var logger = services.GetRequiredService<ILogger<Program>>();
         logger.LogError(ex, "An error occurred while seeding the database.");
     }
-}*/
+}
+*/
 
-/*
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
+/*if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+app.UseCors("corsapp");
 
 app.UseHttpsRedirection();
 

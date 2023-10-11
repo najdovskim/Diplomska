@@ -100,9 +100,11 @@ namespace Diplomska.Dal.Migrations
 
             modelBuilder.Entity("Diplomska.Domain.Models.DriverStanding", b =>
                 {
-                    b.Property<string>("Position")
+                    b.Property<int>("DriverStandingId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("DriverStandingId"), 1L, 1);
 
                     b.Property<string>("ConstructorId")
                         .IsRequired()
@@ -116,6 +118,13 @@ namespace Diplomska.Dal.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Position")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Round")
+                        .HasColumnType("int");
+
                     b.Property<int>("SeasonsId")
                         .HasColumnType("int");
 
@@ -127,7 +136,7 @@ namespace Diplomska.Dal.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("Position");
+                    b.HasKey("DriverStandingId");
 
                     b.HasIndex("ConstructorId");
 
@@ -141,10 +150,7 @@ namespace Diplomska.Dal.Migrations
             modelBuilder.Entity("Diplomska.Domain.Models.Race", b =>
                 {
                     b.Property<int>("RaceId")
-                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("RaceId"), 1L, 1);
 
                     b.Property<string>("CircuitId")
                         .IsRequired()

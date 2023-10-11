@@ -1,4 +1,6 @@
 ﻿
+using Diplomska.Domain.Models;
+
 namespace Diplomska.Dal.RootTable
 {
     public class RaceRoot

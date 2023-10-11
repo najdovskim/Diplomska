@@ -1,4 +1,5 @@
 ﻿using Diplomska.Service.Interfaces;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Diplomska.API.Controllers
@@ -62,7 +63,8 @@ namespace Diplomska.API.Controllers
 
         //Driver Get
         [HttpGet]
-        [Route("{driver}")]
+        //[Route("{driver}")]
+        [EnableCors("corsapp")]
         public async Task<IActionResult> GetAllDriver()
         {
             var drivers = await _formula1Service.GetAllDrivers();

@@ -2,6 +2,7 @@
 using System.Net.Http;
 using System.Threading.Tasks;
 using Diplomska.Dal.RootTable;
+using Diplomska.Domain.Models;
 using Newtonsoft.Json;
 
 public class ErgastService
@@ -112,6 +113,19 @@ public class ErgastService
          }
      }*/
 
+    /*   public async Task<DriverStandingRoot> GetDriverStandings(string season, int round)
+       {
+           if (string.IsNullOrWhiteSpace(season))
+           {
+               throw new ArgumentException("Season cannot be null or empty.", nameof(season));
+           }
+
+           var response = await _httpClient.GetAsync($"http://ergast.com/api/f1/{season}/{round}/driverStandings.json");
+           response.EnsureSuccessStatusCode();
+           var content = await response.Content.ReadAsStringAsync();
+
+       }*/
+
     public async Task<DriverStandingRoot> GetDriverStandings(string season, int round)
     {
         if (string.IsNullOrWhiteSpace(season))
@@ -122,7 +136,32 @@ public class ErgastService
         var response = await _httpClient.GetAsync($"http://ergast.com/api/f1/{season}/{round}/driverStandings.json");
         response.EnsureSuccessStatusCode();
         var content = await response.Content.ReadAsStringAsync();
+
         return JsonConvert.DeserializeObject<DriverStandingRoot>(content);
+       /* var objResponse1 = JsonConvert.DeserializeObject<List<DriverStandingRoot>>(content);
+
+        return objResponse1;*/
     }
- 
+
+    /*public async Task<DriverStanding> GetDriverStandingsAsync(int round)
+    {
+        string apiUrl = $"http://ergast.com/api/f1/2021/{round}/driverStandings.json";
+
+        try
+        {
+            var response = await _httpClient.GetAsync(apiUrl);
+            response.EnsureSuccessStatusCode();
+
+            var json = await response.Content.ReadAsStringAsync();
+            var driverStanding = JsonConvert.DeserializeObject<DriverStanding>(json);
+
+            return driverStanding;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error: {ex.Message}");
+            return null;
+        }
+    }*/
+
 }

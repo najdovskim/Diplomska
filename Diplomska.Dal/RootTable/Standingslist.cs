@@ -11,7 +11,7 @@ namespace Diplomska.Dal.RootTable
     {
         public string season { get; set; }
         public string round { get; set; }
-        //public Driverstanding[] DriverStandings { get; set; }
-        public List<DriverStanding> DriverStandings { get; set; }
+        public List<Driverstanding> Driverstandings { get; set; }
+        //public List<DriverStanding> DriverStandings { get; set; }       
     }
 }

@@ -1,0 +1,29 @@
+.mainContainer{
+    background-color: rgb(214, 212, 212);   
+
+}
+.contentWraper{   
+    margin: 0 auto; 
+    width: 1500px;
+    max-width: 80%;
+    display:flex;
+    justify-content: space-around;
+}
+.linkWrapper{
+    align-items: flex-start;
+    justify-content: start;    
+    display: flex;
+    flex: 1;
+    width: 100%;
+    gap: 80px;
+    height: 100%;  
+}
+.linkWrapper p{
+    font-size: 18px;
+    font-weight: bold; 
+}
+
+.imageWrapper{
+    flex: 1;
+    width: 100%;
+}

@@ -14,5 +14,6 @@
         public RaceTable RaceTable { get; set; }
         public SeasonTable SeasonTable { get; set; }
         public DriverStandingTable StandingsTable { get; set; }
+        public ResultRecetable ResultTable { get; set; }
     }
 }

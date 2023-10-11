@@ -1,5 +1,7 @@
 ﻿using AutoMapper;
+using Diplomska.Dal.RootTable;
 using Diplomska.Domain.Models;
+using Diplomska.Service.Dtos;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,7 +14,9 @@ namespace Diplomska.Service.Automapper
     {
         public DriverStandingMappingProfile()
         {
-            CreateMap<DriverStanding, DriverStandingMappingProfile>();
+            CreateMap<DriverStanding, DriverStandingGetDto>();
+           
+            // Add more mappings as needed
         }
     }
 }

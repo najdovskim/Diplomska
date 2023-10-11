@@ -10,6 +10,7 @@ namespace Diplomska.Dal.RootTable
     public class DriverStandingTable
     {
         public List<Standingslist> StandingsLists { get; set; }
+
     }
 
   /*  public class Standingstable

@@ -29,6 +29,8 @@ namespace Diplomska.Dal
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            //NEW ADDED CHANGE
+            //base.OnModelCreating(modelBuilder);
             // configure many-to-many relationship between Driver and Result
             modelBuilder.Entity<Result>()
                 .HasKey(r => new { r.DriverId, r.RaceId });
@@ -77,6 +79,34 @@ namespace Diplomska.Dal
                 .HasOne(r => r.Season)
                 .WithMany(s => s.Races)
                 .HasForeignKey(r => r.SeasonId);
+
+            //--------------
+
+
+            /*    modelBuilder.Entity<DriverStanding>()
+                    .HasKey(ds => new { ds.SeasonsId, ds.Round, ds.DriverId });
+
+                // Other entity configurations...
+
+                // Configure one-to-many relationship between DriverStanding and Driver
+                modelBuilder.Entity<DriverStanding>()
+                    .HasOne(ds => ds.Driver)
+                    .WithMany(d => d.DriverStandings)
+                    .HasForeignKey(ds => new { ds.DriverId }); // Use a composite foreign key
+
+                // configure one-to-many relationship between DriverStanding and Constructor
+                modelBuilder.Entity<DriverStanding>()
+                    .HasOne(ds => ds.Constructors)
+                    .WithMany(d => d.DriverStandings)
+                    .HasForeignKey(ds => ds.ConstructorId);
+
+                // configure one-to-many relationship between DriverStanding and Season
+                modelBuilder.Entity<DriverStanding>()
+                    .HasOne(ds => ds.Season)
+                    .WithMany(s => s.DriverStandings)
+                    .HasForeignKey(ds => ds.SeasonsId);*/
+
+
         }
 
 

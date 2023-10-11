@@ -5,7 +5,7 @@ namespace Diplomska.Domain.Models
 {
     public class Race
     {
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         [Key]
         public int RaceId { get; set; }
         public string raceName { get; set; }

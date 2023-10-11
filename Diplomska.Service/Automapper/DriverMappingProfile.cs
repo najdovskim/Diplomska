@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Diplomska.Domain.Models;
+using Diplomska.Service.Dtos;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,7 +13,8 @@ namespace Diplomska.Service.Automapper
     {
         public DriverMappingProfile()
         {
-            CreateMap<Driver, DriverMappingProfile>();
+            CreateMap<Driver, DriverGetDto>()
+                .ReverseMap();
         }
     }
 }

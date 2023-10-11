@@ -4,7 +4,7 @@
 
 namespace Diplomska.Dal.Migrations
 {
-    public partial class init : Migration
+    public partial class ChangesToDriverStandings : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -67,7 +67,10 @@ namespace Diplomska.Dal.Migrations
                 name: "DriverStandings",
                 columns: table => new
                 {
-                    Position = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    DriverStandingId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Round = table.Column<int>(type: "int", nullable: false),
+                    Position = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     positionText = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Points = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Wins = table.Column<string>(type: "nvarchar(max)", nullable: false),
@@ -77,7 +80,7 @@ namespace Diplomska.Dal.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_DriverStandings", x => x.Position);
+                    table.PrimaryKey("PK_DriverStandings", x => x.DriverStandingId);
                     table.ForeignKey(
                         name: "FK_DriverStandings_Constructors_ConstructorId",
                         column: x => x.ConstructorId,
@@ -102,8 +105,7 @@ namespace Diplomska.Dal.Migrations
                 name: "Races",
                 columns: table => new
                 {
-                    RaceId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    RaceId = table.Column<int>(type: "int", nullable: false),
                     raceName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Date = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Time = table.Column<string>(type: "nvarchar(max)", nullable: false),
