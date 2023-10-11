@@ -22,15 +22,6 @@ namespace Diplomska.Service.Services
             _fromula1Repository = fromula1Repo;
         }
 
-
-        public async Task<List<Circuit>> GetAllCircuits()
-        {
-            var circuits = await _fromula1Repository.GetAllCircuits();
-            //var circuitsGet = _mapper.Map<List<CircuitGetDto>>(circuits);
-
-            return circuits;
-        }
-
         public async Task<List<DriverStandingGetDto>> GetAllDriverStandings()
         {
             var driverStandings = await _fromula1Repository.GetAllDriverStandings();
@@ -62,19 +53,7 @@ namespace Diplomska.Service.Services
 
             return seasonsGet;
         }
-
-        public async Task<CircuitGetDto> GetCircuitById(string circuitId)
-        {
-            var circuit = await _fromula1Repository.GetCircuitById(circuitId);
-
-            if (circuitId.Equals(null))
-            {
-                return null;
-            }
-
-            var mapped = _mapper.Map<CircuitGetDto>(circuit);
-            return mapped;
-        }      
+        
 
         public async Task<DriverStandingGetDto> GetDriverStandingById(string driverStandingId)
         {

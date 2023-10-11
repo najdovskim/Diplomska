@@ -13,32 +13,7 @@ namespace Diplomska.API.Controllers
         public Formula1SeasonController( IFormula1Service formula1Service)
         {
             _formula1Service = formula1Service;
-        }
-
-        //Circuit Get
-        [HttpGet]
-        [Route("{circuit}")]
-        public async Task<IActionResult> GetAllCircuits()
-        {
-            var circuits = await _formula1Service.GetAllCircuits();
-            return Ok(circuits);
-        }
-
-        [HttpGet]
-        [Route("{circuitId}")]
-        public async Task<IActionResult> GetCircuitById(string circuitId)
-        {
-
-            var circuit = await _formula1Service.GetCircuitById(circuitId);
-            if (circuit.Equals(null))
-                return NotFound("Item not found");
-            
-
-            return Ok(circuit);
         }             
-
-      
-
 
         //DriverStanding Get
         [HttpGet]

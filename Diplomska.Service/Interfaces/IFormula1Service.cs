@@ -9,9 +9,7 @@ using System.Threading.Tasks;
 namespace Diplomska.Service.Interfaces
 {
     public interface IFormula1Service
-    {
-        Task<List<Circuit>> GetAllCircuits();
-        Task<CircuitGetDto> GetCircuitById(string circuitId);     
+    {          
 
         Task<List<DriverStandingGetDto>> GetAllDriverStandings();
         Task<DriverStandingGetDto> GetDriverStandingById(string driverStandingId);
