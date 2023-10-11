@@ -11,11 +11,8 @@ namespace Diplomska.Service.Interfaces
     public interface IFormula1Service
     {          
 
-        Task<List<DriverStandingGetDto>> GetAllDriverStandings();
-        Task<DriverStandingGetDto> GetDriverStandingById(string driverStandingId);
-
-        Task<List<RaceGetDto>> GetAllRaces();
-        Task<RaceGetDto> GetRaceById(int raceId);
+     /*   Task<List<DriverStandingGetDto>> GetAllDriverStandings();
+        Task<DriverStandingGetDto> GetDriverStandingById(string driverStandingId);*/
 
         Task<List<ResultGetDto>> GetAllResults();
         Task<ResultGetDto> GetResultById(int resultId);

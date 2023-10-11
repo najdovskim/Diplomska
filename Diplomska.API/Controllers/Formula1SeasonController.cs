@@ -15,7 +15,7 @@ namespace Diplomska.API.Controllers
             _formula1Service = formula1Service;
         }             
 
-        //DriverStanding Get
+      /*  //DriverStanding Get
         [HttpGet]
         [Route("{driverStanding}")]
         public async Task<IActionResult> GetAllDriverStanding()
@@ -33,28 +33,8 @@ namespace Diplomska.API.Controllers
                 return NotFound("Item not found");
 
             return Ok(driverStanding);
-        }
+        }*/
 
-
-        //Race Get
-        [HttpGet]
-        [Route("{race}")]
-        public async Task<IActionResult> GetAllRaceStanding()
-        {
-            var races = await _formula1Service.GetAllRaces();
-            return Ok(races);
-        }
-
-        [HttpGet]
-        [Route("{raceId}")]
-        public async Task<IActionResult> GetRaceById(int raceId)
-        {
-            var race = await _formula1Service.GetRaceById(raceId);
-            if (race.Equals(null))
-                return NotFound("Item not found");
-
-            return Ok(race);
-        }
 
         //Result Get
         [HttpGet]

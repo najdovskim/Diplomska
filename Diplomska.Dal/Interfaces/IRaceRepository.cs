@@ -7,11 +7,9 @@ using System.Threading.Tasks;
 
 namespace Diplomska.Dal.Interfaces
 {
-    public interface IFromula1Repository
-    {          
-
-        Task<List<Result>> GetAllResults();
-        Task<Result> GetResultById(int resultId);
-
+    public interface IRaceRepository
+    {
+        Task<List<Race>> GetAllRaces(int seasonId);
+        Task<Race> GetRaceById(int raceId);
     }
 }

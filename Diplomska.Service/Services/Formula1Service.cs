@@ -22,21 +22,7 @@ namespace Diplomska.Service.Services
             _fromula1Repository = fromula1Repo;
         }
 
-        public async Task<List<DriverStandingGetDto>> GetAllDriverStandings()
-        {
-            var driverStandings = await _fromula1Repository.GetAllDriverStandings();
-            var driverStandingGet = _mapper.Map<List<DriverStandingGetDto>>(driverStandings);
-
-            return driverStandingGet;
-        }
-
-        public async Task<List<RaceGetDto>> GetAllRaces()
-        {
-            var races = await _fromula1Repository.GetAllRaces();
-            var racesGet = _mapper.Map<List<RaceGetDto>>(races);
-
-            return racesGet;
-        }
+        
 
         public async Task<List<ResultGetDto>> GetAllResults()
         {
@@ -45,35 +31,21 @@ namespace Diplomska.Service.Services
 
             return resultGet;
         }
-        
 
+/*
         public async Task<DriverStandingGetDto> GetDriverStandingById(string driverStandingId)
         {
             var driverStanding = await _fromula1Repository.GetDriverStandingById(driverStandingId);
 
 
-            if (driverStandingId == null )
+            if (driverStandingId == null)
             {
                 return null;
             }
 
             var mapped = _mapper.Map<DriverStandingGetDto>(driverStanding);
             return mapped;
-        }
-
-        public async Task<RaceGetDto> GetRaceById(int raceId)
-        {
-            var race = await _fromula1Repository.GetRaceById(raceId);
-
-
-            if (race == null)
-            {
-                return null;
-            }
-
-            var mapped = _mapper.Map<RaceGetDto>(race);
-            return mapped;
-        }
+        }*/
 
         public async Task<ResultGetDto> GetResultById(int resultId)
         {
