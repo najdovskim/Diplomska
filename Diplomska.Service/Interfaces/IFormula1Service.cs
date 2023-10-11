@@ -14,10 +14,7 @@ namespace Diplomska.Service.Interfaces
         Task<CircuitGetDto> GetCircuitById(string circuitId);
 
         Task<List<ConstructorGetDto>> GetAllConstructors();
-        Task<ConstructorGetDto> GetConstructorById(string constructorId);
-
-        Task<List<DriverGetDto>> GetAllDrivers();
-        Task<DriverGetDto> GetDriverById(string driverId);
+        Task<ConstructorGetDto> GetConstructorById(string constructorId);      
 
         Task<List<DriverStandingGetDto>> GetAllDriverStandings();
         Task<DriverStandingGetDto> GetDriverStandingById(string driverStandingId);

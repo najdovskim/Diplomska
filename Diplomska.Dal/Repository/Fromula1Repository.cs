@@ -29,11 +29,7 @@ namespace Diplomska.Dal.Repository
         {
             return await _ctx.Constructors.ToListAsync();
         }
-
-        public async Task<List<Driver>> GetAllDrivers()
-        {
-            return await _ctx.Drivers.ToListAsync();
-        }
+  
 
         public async Task<List<DriverStanding>> GetAllDriverStandings()
         {
@@ -75,15 +71,7 @@ namespace Diplomska.Dal.Repository
             return constructor;
         }
 
-        public async Task<Driver> GetDriverById(string driverId)
-        {
-            var driver = await _ctx.Drivers.FirstOrDefaultAsync(d => d.DriverId == driverId);
-
-            if (driver == null)
-                return null;
-
-            return driver;
-        }
+      
 
         public async Task<DriverStanding> GetDriverStandingById(string driverStandingId)
         {

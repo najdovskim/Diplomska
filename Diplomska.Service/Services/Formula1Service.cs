@@ -39,13 +39,7 @@ namespace Diplomska.Service.Services
             return constructorsGet;
         }
 
-        public async Task<List<DriverGetDto>> GetAllDrivers()
-        {
-            var drivers = await _fromula1Repository.GetAllDrivers();
-            var driversGet = _mapper.Map<List<DriverGetDto>>(drivers);
-
-            return driversGet; 
-        }
+     
 
         public async Task<List<DriverStandingGetDto>> GetAllDriverStandings()
         {
@@ -105,19 +99,6 @@ namespace Diplomska.Service.Services
             return mapped;
         }
 
-        public async Task<DriverGetDto> GetDriverById(string driverId)
-        {
-            var driver = await _fromula1Repository.GetDriverById(driverId);
-
-
-            if (driverId.Equals(null))
-            {
-                return null;
-            }
-
-            var mapped = _mapper.Map<DriverGetDto>(driver);
-            return mapped;
-        }
 
         public async Task<DriverStandingGetDto> GetDriverStandingById(string driverStandingId)
         {

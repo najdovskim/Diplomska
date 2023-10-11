@@ -39,6 +39,10 @@ builder.Services.AddAutoMapper(typeof(Program).Assembly);
 
 builder.Services.AddScoped<IFromula1Repository, Fromula1Repository>();
 builder.Services.AddScoped<IFormula1Service, Formula1Service>();
+
+builder.Services.AddScoped<IDriverRepository, DriverRepository>();
+builder.Services.AddScoped<IDriverService, DriverService>();
+
 builder.Services.AddScoped<SeedData>();
 
 builder.Services.AddCors(p => p.AddPolicy("corsapp", builder =>
@@ -52,7 +56,7 @@ builder.Services.AddCors(p => p.AddPolicy("corsapp", builder =>
 
 var app = builder.Build();
 
-using (var scope = app.Services.CreateScope())
+/*using (var scope = app.Services.CreateScope())
 {
     var services = scope.ServiceProvider;
     try
@@ -65,7 +69,7 @@ using (var scope = app.Services.CreateScope())
         var logger = services.GetRequiredService<ILogger<Program>>();
         logger.LogError(ex, "An error occurred while seeding the database.");
     }
-}
+}*/
 
 
 /*using (var scope = app.Services.CreateScope())
@@ -84,7 +88,7 @@ using (var scope = app.Services.CreateScope())
 */
 
 // Configure the HTTP request pipeline.
-/*if (app.Environment.IsDevelopment())
+if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
@@ -99,4 +103,3 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.Run();
-*/

@@ -14,10 +14,10 @@ namespace Diplomska.Dal.Interfaces
 
         Task<List<Constructor>> GetAllConstructors();
         Task<Constructor> GetConstructorById(string constructorId);
-
+/*
         Task<List<Driver>> GetAllDrivers();
         Task<Driver> GetDriverById(string driverId);
-
+*/
         Task<List<DriverStanding>> GetAllDriverStandings();
         Task<DriverStanding> GetDriverStandingById(string driverStandingId);
 
