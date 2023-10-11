@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Diplomska.Domain.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,5 +9,7 @@ namespace Diplomska.Dal.Interfaces
 {
     public interface IConstructorRepository
     {
+        Task<List<Constructor>> GetAllConstructors(int seasonId);
+        Task<Constructor> GetConstructorById(string constructorId);
     }
 }

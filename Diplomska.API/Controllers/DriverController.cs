@@ -17,8 +17,7 @@ namespace Diplomska.API.Controllers
 
 
         //Driver Get
-        [HttpGet]
-        //[Route("{driver}")]
+        [HttpGet]        
         [EnableCors("corsapp")]
         public async Task<IActionResult> GetAllDriver(int season)
         {

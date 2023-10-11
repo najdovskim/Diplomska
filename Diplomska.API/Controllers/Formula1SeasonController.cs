@@ -60,27 +60,7 @@ namespace Diplomska.API.Controllers
             return Ok(constructor);
         }
 
-
-        //Driver Get
-        [HttpGet]
-        //[Route("{driver}")]
-        [EnableCors("corsapp")]
-        public async Task<IActionResult> GetAllDriver()
-        {
-            var drivers = await _formula1Service.GetAllDrivers();
-            return Ok(drivers);
-        }
-
-        [HttpGet]
-        [Route("{driverId}")]
-        public async Task<IActionResult> GetDriverById(string driverId)
-        {
-            var driver = await _formula1Service.GetDriverById(driverId);
-            if (driver.Equals(null))
-                return NotFound("Item not found");
-
-            return Ok(driver);
-        }
+      
 
 
         //DriverStanding Get
