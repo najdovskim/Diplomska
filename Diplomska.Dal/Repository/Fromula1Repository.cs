@@ -23,14 +23,7 @@ namespace Diplomska.Dal.Repository
         {
             return await _ctx.Circuits.ToListAsync();
         }
-        
-
-        public async Task<List<Constructor>> GetAllConstructors()
-        {
-            return await _ctx.Constructors.ToListAsync();
-        }
   
-
         public async Task<List<DriverStanding>> GetAllDriverStandings()
         {
             return await _ctx.DriverStandings.ToListAsync();
@@ -59,16 +52,6 @@ namespace Diplomska.Dal.Repository
                 return null;
 
             return circuit;
-        }
-
-        public async Task<Constructor> GetConstructorById(string constructorId)
-        {
-            var constructor = await _ctx.Constructors.FirstOrDefaultAsync(c => c.ConstructorId == constructorId);
-
-            if (constructor == null)
-                return null;
-
-            return constructor;
         }
 
       

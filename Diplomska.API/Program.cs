@@ -46,6 +46,9 @@ builder.Services.AddScoped<IDriverService, DriverService>();
 builder.Services.AddScoped<IConstructorRepository, ConstructorRepository>();
 builder.Services.AddScoped<IConstructorService, ConstructorService>();
 
+builder.Services.AddScoped<ICircuitRepository, CircuitRepository>();
+builder.Services.AddScoped<ICircuitService, CircuitService>();
+
 builder.Services.AddScoped<SeedData>();
 
 builder.Services.AddCors(p => p.AddPolicy("corsapp", builder =>

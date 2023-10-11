@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Diplomska.Domain.Models;
+using Diplomska.Service.Dtos;
 using FluentAssertions.Common;
 using System;
 using System.Collections.Generic;
@@ -13,7 +14,7 @@ namespace Diplomska.Service.Automapper
     {
         public CircuitMappingProfile()
         {
-            CreateMap<Circuit, CircuitMappingProfile>()
+            CreateMap<Circuit, CircuitGetDto>()
                 .ReverseMap();
         }
     }

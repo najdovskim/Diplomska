@@ -35,30 +35,7 @@ namespace Diplomska.API.Controllers
             
 
             return Ok(circuit);
-        }
-
-        //Constructor Get
-
-        [HttpGet]
-        [Route("{constructor}")]
-        public async Task<IActionResult> GetAllConstructor()
-        {
-            var constructors = await _formula1Service.GetAllConstructors();
-            return Ok(constructors);
-        }
-
-        [HttpGet]
-        [Route("{constructorId}")]
-        public async Task<IActionResult> GetConstructorById(string constructorId)
-        {
-
-            var constructor = await _formula1Service.GetConstructorById(constructorId);
-            if (constructor.Equals(null))
-                return NotFound("Item not found");
-
-
-            return Ok(constructor);
-        }
+        }             
 
       
 

@@ -8,13 +8,7 @@ using System.Threading.Tasks;
 namespace Diplomska.Dal.Interfaces
 {
     public interface IFromula1Repository
-    {
-        Task<List<Circuit>> GetAllCircuits();
-        Task<Circuit> GetCircuitById(string circuitId);
-
-        Task<List<Constructor>> GetAllConstructors();
-        Task<Constructor> GetConstructorById(string constructorId);
-
+    {    
         Task<List<DriverStanding>> GetAllDriverStandings();
         Task<DriverStanding> GetDriverStandingById(string driverStandingId);
 
