@@ -55,6 +55,10 @@ builder.Services.AddScoped<ISeasonService, SeasonService>();
 builder.Services.AddScoped<IRaceRepository, RaceRepository>();
 builder.Services.AddScoped<IRaceService, RaceService>();
 
+builder.Services.AddScoped<IDriverStandingRepository, DriverStandingRepository>();
+builder.Services.AddScoped<IDriverStandingService, DriverStandingService>();
+
+
 builder.Services.AddScoped<SeedData>();
 
 builder.Services.AddCors(p => p.AddPolicy("corsapp", builder =>
