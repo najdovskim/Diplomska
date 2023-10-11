@@ -18,12 +18,7 @@ namespace Diplomska.Dal.Repository
             _ctx = ctx;
         }
 
-        
-        public async Task<List<Circuit>> GetAllCircuits()
-        {
-            return await _ctx.Circuits.ToListAsync();
-        }
-  
+     
         public async Task<List<DriverStanding>> GetAllDriverStandings()
         {
             return await _ctx.DriverStandings.ToListAsync();
@@ -38,23 +33,7 @@ namespace Diplomska.Dal.Repository
         {
             return await _ctx.Results.ToListAsync();
         }
-
-        public async Task<List<Season>> GetAllSeasons()
-        {
-            return await _ctx.Seasons.ToListAsync();
-        }
-
-        public async Task<Circuit> GetCircuitById(string circuitId)
-        {
-            var circuit = await _ctx.Circuits.FirstOrDefaultAsync(c => c.CircuitId == circuitId);
-
-            if (circuit == null)
-                return null;
-
-            return circuit;
-        }
-
-      
+            
 
         public async Task<DriverStanding> GetDriverStandingById(string driverStandingId)
         {
@@ -83,17 +62,8 @@ namespace Diplomska.Dal.Repository
             if (result == null)
                 return null;
 
-            return result;
+            return result;    
         }
-
-        public async Task<Season> GetSeasonById(int seasonId)
-        {
-            var season = await _ctx.Seasons.FirstOrDefaultAsync(c => c.SeasonId == seasonId);
-
-            if (season == null)
-                return null;
-
-            return season;
-        }
+      
     }
 }

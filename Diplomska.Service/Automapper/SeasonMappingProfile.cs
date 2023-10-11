@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Diplomska.Domain.Models;
+using Diplomska.Service.Dtos;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,7 +13,7 @@ namespace Diplomska.Service.Automapper
     {
         public SeasonMappingProfile()
         {
-            CreateMap<Season, SeasonMappingProfile>();
+            CreateMap<Season, SeasonGetDto>();
         }
 
     }

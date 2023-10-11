@@ -22,15 +22,6 @@ namespace Diplomska.Service.Services
             _fromula1Repository = fromula1Repo;
         }
 
-
-        public async Task<List<Circuit>> GetAllCircuits()
-        {
-            var circuits = await _fromula1Repository.GetAllCircuits();
-            //var circuitsGet = _mapper.Map<List<CircuitGetDto>>(circuits);
-
-            return circuits;
-        }
-
         public async Task<List<DriverStandingGetDto>> GetAllDriverStandings()
         {
             var driverStandings = await _fromula1Repository.GetAllDriverStandings();
@@ -54,27 +45,7 @@ namespace Diplomska.Service.Services
 
             return resultGet;
         }
-
-        public async Task<List<SeasonGetDto>> GetAllSeasons()
-        {
-            var seasons = await _fromula1Repository.GetAllSeasons();
-            var seasonsGet = _mapper.Map<List<SeasonGetDto>>(seasons);
-
-            return seasonsGet;
-        }
-
-        public async Task<CircuitGetDto> GetCircuitById(string circuitId)
-        {
-            var circuit = await _fromula1Repository.GetCircuitById(circuitId);
-
-            if (circuitId.Equals(null))
-            {
-                return null;
-            }
-
-            var mapped = _mapper.Map<CircuitGetDto>(circuit);
-            return mapped;
-        }      
+        
 
         public async Task<DriverStandingGetDto> GetDriverStandingById(string driverStandingId)
         {
@@ -117,19 +88,6 @@ namespace Diplomska.Service.Services
             var mapped = _mapper.Map<ResultGetDto>(result);
             return mapped;
         }
-
-        public async Task<SeasonGetDto> GetSeasonById(int seasonId)
-        {
-            var season = await _fromula1Repository.GetSeasonById(seasonId);
-
-
-            if (season == null)
-            {
-                return null;
-            }
-
-            var mapped = _mapper.Map<SeasonGetDto>(season);
-            return mapped;
-        }
+      
     }
 }

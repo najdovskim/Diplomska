@@ -18,8 +18,5 @@ namespace Diplomska.Dal.Interfaces
         Task<List<Result>> GetAllResults();
         Task<Result> GetResultById(int resultId);
 
-        Task<List<Season>> GetAllSeasons();
-        Task<Season> GetSeasonById(int seasonId);
-
     }
 }

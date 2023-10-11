@@ -13,32 +13,7 @@ namespace Diplomska.API.Controllers
         public Formula1SeasonController( IFormula1Service formula1Service)
         {
             _formula1Service = formula1Service;
-        }
-
-        //Circuit Get
-        [HttpGet]
-        [Route("{circuit}")]
-        public async Task<IActionResult> GetAllCircuits()
-        {
-            var circuits = await _formula1Service.GetAllCircuits();
-            return Ok(circuits);
-        }
-
-        [HttpGet]
-        [Route("{circuitId}")]
-        public async Task<IActionResult> GetCircuitById(string circuitId)
-        {
-
-            var circuit = await _formula1Service.GetCircuitById(circuitId);
-            if (circuit.Equals(null))
-                return NotFound("Item not found");
-            
-
-            return Ok(circuit);
         }             
-
-      
-
 
         //DriverStanding Get
         [HttpGet]
@@ -100,28 +75,6 @@ namespace Diplomska.API.Controllers
 
             return Ok(result);
         }
-
-
-        //Season Get
-        [HttpGet]
-        [Route("{season}")]
-        public async Task<IActionResult> GetAllSeasonStanding()
-        {
-            var seasons = await _formula1Service.GetAllSeasons();
-            return Ok(seasons);
-        }
-
-        [HttpGet]
-        [Route("{seasonId}")]
-        public async Task<IActionResult> GetSeasonById(int seasonId)
-        {
-            var season = await _formula1Service.GetSeasonById(seasonId);
-            if (season.Equals(null))
-                return NotFound("Item not found");
-
-            return Ok(season);
-        }
-
 
     }
 }
