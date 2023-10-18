@@ -5,7 +5,7 @@ import logo from '../../assets/images/f1logo.png'
 const Navigation = () => {
   return (
     <div className= {classes.mainContainer}>
-        <div className={classes.contentWraper}>
+        <div className={classes.contentWrapper}>
             <div className={classes.imageWrapper}>
             <img src ={logo} height= {60} width={170} alt='formula1'/>
 
