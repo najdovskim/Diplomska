@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from 'react'
 import fetchData from '../../services/FetchData'
+import DriverSideBar from '../DriverSideBar/DriverSideBar'
+import DriverCharts from '../DriverCharts/DriverCharts'
 
 
 const HeroSection = () => {
     const [data, setData] = useState([])
     const [loading, setLoading] = useState(true)
     useEffect(() => {   
-        const apiUrl = 'https://localhost:7249/api/Formula1Season'
+        const apiUrl = 'https://localhost:7249/api/Driver?season=2020'
         fetchData(apiUrl)
         .then((result) => {
             setData(result);
@@ -18,7 +20,10 @@ const HeroSection = () => {
     }, [])
     console.log('Data', data);
   return (
-    <div>HeroSection</div>
+    <div>
+      <DriverSideBar data={data}/>
+      <DriverCharts />
+    </div>
   )
 }
 
