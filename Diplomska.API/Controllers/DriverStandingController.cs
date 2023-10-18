@@ -1,4 +1,5 @@
 ﻿using Diplomska.Service.Interfaces;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Diplomska.API.Controllers
@@ -14,7 +15,8 @@ namespace Diplomska.API.Controllers
             _driverStandingService = driverStandingService;
         }
 
-        [HttpGet]        
+        [HttpGet]
+        [EnableCors("corsapp")]
         public async Task<IActionResult> GetAllDriverStandingByRound(int season, int round)
         {
             var driverStandings = await _driverStandingService.GetDriverStandingByRound(season, round);

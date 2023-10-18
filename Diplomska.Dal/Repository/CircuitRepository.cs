@@ -19,7 +19,7 @@ namespace Diplomska.Dal.Repository
 
 
         public async Task<List<Circuit>> GetAllCircuits(int seasonId)
-        {          
+        {
             return await _ctx.Circuits
            .Where(c => c.Races.Any(r => r.SeasonId == seasonId))
            .ToListAsync();
