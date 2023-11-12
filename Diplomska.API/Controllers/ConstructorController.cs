@@ -8,10 +8,12 @@ namespace Diplomska.API.Controllers
     public class ConstructorController : Controller
     {
         private readonly IConstructorService _constructorService;
+        
 
         public ConstructorController(IConstructorService constructorService)
         {
             _constructorService = constructorService;
+            
         }
 
 

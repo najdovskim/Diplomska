@@ -147,6 +147,23 @@ namespace Diplomska.Dal.Migrations
                     b.ToTable("DriverStandings");
                 });
 
+            modelBuilder.Entity("Diplomska.Domain.Models.DriverStandingTransformed", b =>
+                {
+                    b.Property<string>("DriverName")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("ConstructorId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("DriverName");
+
+                    b.HasIndex("ConstructorId");
+
+                    b.ToTable("DriverStandingTransformed");
+                });
+
             modelBuilder.Entity("Diplomska.Domain.Models.Race", b =>
                 {
                     b.Property<int>("RaceId")
@@ -231,6 +248,31 @@ namespace Diplomska.Dal.Migrations
                     b.ToTable("Results");
                 });
 
+            modelBuilder.Entity("Diplomska.Domain.Models.Round", b =>
+                {
+                    b.Property<int>("RoundId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("RoundId"), 1L, 1);
+
+                    b.Property<string>("DriverName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("DriversFromTransformedDriverName")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int>("Points")
+                        .HasColumnType("int");
+
+                    b.HasKey("RoundId");
+
+                    b.HasIndex("DriversFromTransformedDriverName");
+
+                    b.ToTable("Round");
+                });
+
             modelBuilder.Entity("Diplomska.Domain.Models.Season", b =>
                 {
                     b.Property<int>("SeasonId")
@@ -266,6 +308,17 @@ namespace Diplomska.Dal.Migrations
                     b.Navigation("Driver");
 
                     b.Navigation("Season");
+                });
+
+            modelBuilder.Entity("Diplomska.Domain.Models.DriverStandingTransformed", b =>
+                {
+                    b.HasOne("Diplomska.Domain.Models.Constructor", "Constructors")
+                        .WithMany("DriverStandingTransformeds")
+                        .HasForeignKey("ConstructorId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Constructors");
                 });
 
             modelBuilder.Entity("Diplomska.Domain.Models.Race", b =>
@@ -314,6 +367,15 @@ namespace Diplomska.Dal.Migrations
                     b.Navigation("Race");
                 });
 
+            modelBuilder.Entity("Diplomska.Domain.Models.Round", b =>
+                {
+                    b.HasOne("Diplomska.Domain.Models.DriverStandingTransformed", "DriversFromTransformed")
+                        .WithMany("Rounds")
+                        .HasForeignKey("DriversFromTransformedDriverName");
+
+                    b.Navigation("DriversFromTransformed");
+                });
+
             modelBuilder.Entity("Diplomska.Domain.Models.Circuit", b =>
                 {
                     b.Navigation("Races");
@@ -321,6 +383,8 @@ namespace Diplomska.Dal.Migrations
 
             modelBuilder.Entity("Diplomska.Domain.Models.Constructor", b =>
                 {
+                    b.Navigation("DriverStandingTransformeds");
+
                     b.Navigation("DriverStandings");
                 });
 
@@ -329,6 +393,11 @@ namespace Diplomska.Dal.Migrations
                     b.Navigation("DriverStandings");
 
                     b.Navigation("Results");
+                });
+
+            modelBuilder.Entity("Diplomska.Domain.Models.DriverStandingTransformed", b =>
+                {
+                    b.Navigation("Rounds");
                 });
 
             modelBuilder.Entity("Diplomska.Domain.Models.Race", b =>

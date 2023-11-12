@@ -13,15 +13,11 @@ const Navigation = () => {
         
                 <div className={classes.linkWrapper}>
                     <p>
-                        Team
+                        Teams
                     </p>
                     <p>
-                       Race 
-                    </p>
-                    <p>
-                        Driver
-                    </p>
-
+                       Chart 
+                    </p>                  
             </div>
         </div>
     </div>

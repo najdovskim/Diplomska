@@ -29,14 +29,93 @@ namespace Diplomska.Dal.Data
 
             using (var context = serviceProvider.GetRequiredService<DataContext>())
             {
-            /*   await SeedCircuitData(context, ergastService);
+                /*await SeedCircuitData(context, ergastService);
                 await SeedDriversData(context, ergastService);
                 await SeedConstructorData(context, ergastService);
                 await SeedSeasonData(context, ergastService);
                 //await SeedRaceData(context, ergastService);
-                await SeedRaceDataNew(context, ergastService);
-                await SeedDriverStandingData(context, ergastService);
-            */                
+                await SeedRaceDataNew(context, ergastService);*/
+                //await SeedDriverStandingData(context, ergastService);
+               
+
+                try
+                {
+                    var seasonYear = 2020;
+                    int raceRound = 1;
+
+                    string season = seasonYear.ToString();
+                    while (true) // Continue fetching data until there is no more data
+                    {
+                        var standingsData = await ergastService.GetDriverStandings(season, raceRound);
+
+                        // Check if the response contains the expected data structure                        
+                        if (standingsData == null || standingsData.MRData == null || standingsData.MRData.StandingsTable == null || standingsData.MRData.StandingsTable.StandingsLists.FirstOrDefault()?.Driverstandings == null)
+                        {
+                            Console.WriteLine("API response does not contain expected data structure.");
+                            Console.WriteLine(standingsData);
+                            break; // Break out of the loop if data is not as expected
+                        }
+
+                        // Iterate through driver standings data and save to the database
+                        foreach (var driverStanding in standingsData.MRData.StandingsTable.StandingsLists.FirstOrDefault()?.Driverstandings)
+                        {
+                            if (driverStanding == null)
+                            {
+                                break;
+                            }
+
+                            // Check if the referenced DriverId exists in the Drivers table
+                            var driverId = driverStanding.Driver.DriverId;
+                            var existingDriver = context.Drivers.FirstOrDefault(d => d.DriverId == driverId);
+
+                            if (existingDriver == null)
+                            {
+                                Console.WriteLine($"Driver with ID {driverId} does not exist in the Drivers table. Skipping this record.");
+                                continue; // Skip this record and proceed with the next one
+                            }
+
+                            var apiDriverStanding = new Driverstanding
+                            {
+                                Position = driverStanding.Position,
+                                PositionText = driverStanding.PositionText,
+                                Points = driverStanding.Points,
+                                Wins = driverStanding.Wins,
+                                Driver = existingDriver, // Use the existing driver from the database
+                                Constructors = driverStanding?.Constructors,
+                            };
+
+                            // Translate data from Driverstanding to DriverStanding (for the database)
+                            var dbDriverStanding = new DriverStanding
+                            {
+                                Round = raceRound,
+                                Position = apiDriverStanding.Position,
+                                positionText = apiDriverStanding.PositionText,
+                                Points = apiDriverStanding.Points,
+                                Wins = apiDriverStanding.Wins,
+                                DriverId = apiDriverStanding.Driver.DriverId,
+                                SeasonsId = seasonYear,
+                                ConstructorId = apiDriverStanding.Constructors?.FirstOrDefault()?.ConstructorId
+                            };
+
+                            context.DriverStandings.Add(dbDriverStanding); // Add to the database context
+                        }
+
+                        await context.SaveChangesAsync(); // Save all changes to the database
+
+                        raceRound++; // Increment the round for the next iteration
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Error: " + ex.Message);
+                    Exception innerException = ex;
+                    while (innerException.InnerException != null)
+                    {
+                        innerException = innerException.InnerException;
+                    }
+
+                    Console.WriteLine("Error: " + innerException.Message);
+                }
 
 
             }
@@ -46,7 +125,7 @@ namespace Diplomska.Dal.Data
 
         private async Task SeedDriversData(DataContext context, ErgastService ergastService)
         {
-            var drivers = await ergastService.GetDriversAsync("2021");
+            var drivers = await ergastService.GetDriversAsync("2020");
 
             if (drivers != null && drivers.MRData != null && drivers.MRData.DriverTable.Drivers != null)
             {
@@ -227,7 +306,153 @@ namespace Diplomska.Dal.Data
             }
         }
 
+        /*private async Task SeedDriverStandingData(DataContext context, ErgastService ergastService)
+        {
+            try
+            {
+                var seasonYear = 2020;
+                int raceRound = 1;
+
+                string season = seasonYear.ToString();
+
+                while (true) // Continue fetching data until there is no more data
+                {
+                    var standingsData = await ergastService.GetDriverStandings(season, raceRound);
+
+                    // Check if the response contains the expected data structure                        
+                    if (standingsData == null || standingsData.MRData == null || standingsData.MRData.StandingsTable == null || standingsData.MRData.StandingsTable.StandingsLists.FirstOrDefault()?.Driverstandings == null)
+                    {
+                        Console.WriteLine("API response does not contain expected data structure.");
+                        Console.WriteLine(standingsData);
+                        break; // Break out of the loop if data is not as expected
+                    }
+
+                    // Save driver standings data to the database for the current round
+                    foreach (var driverStanding in standingsData.MRData.StandingsTable.StandingsLists.FirstOrDefault()?.Driverstandings)
+                    {
+                        if (driverStanding == null)
+                        {
+                            break;
+                        }
+                        var apiDriverStanding = new Driverstanding
+                        {
+
+                            Position = driverStanding.Position,
+                            PositionText = driverStanding.PositionText,
+                            Points = driverStanding.Points,
+                            Wins = driverStanding.Wins,
+                            Driver = new Driver { DriverId = driverStanding.Driver.DriverId },
+                            Constructors = driverStanding?.Constructors,
+                        };
+
+                        // Translate data from Driverstanding to DriverStanding (for the database)
+                        var dbDriverStanding = new DriverStanding
+                        {
+                            Round = raceRound,
+                            Position = apiDriverStanding.Position,
+                            positionText = apiDriverStanding.PositionText,
+                            Points = apiDriverStanding.Points,
+                            Wins = apiDriverStanding.Wins,
+                            DriverId = apiDriverStanding.Driver.DriverId,
+                            SeasonsId = seasonYear,
+                            ConstructorId = apiDriverStanding.Constructors?.FirstOrDefault()?.ConstructorId
+                        };
+
+                        _data.DriverStandings.Add(dbDriverStanding);  // Save to database context
+                    }
+
+                    await _data.SaveChangesAsync(); // Save all changes to the database
+
+                    raceRound++; // Increment the round for the next iteration
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error: " + ex.Message);
+                Exception innerException = ex;
+                while (innerException.InnerException != null)
+                {
+                    innerException = innerException.InnerException;
+                }
+
+                Console.WriteLine("Error: " + innerException.Message);
+            }
+        }*/
+
         private async Task SeedDriverStandingData(DataContext context, ErgastService ergastService)
+        {
+            try
+            {
+                var seasonYear = 2020;
+                int raceRound = 1;
+
+                string season = seasonYear.ToString();
+
+                while (true) // Continue fetching data until there is no more data
+                {
+                    var standingsData = await ergastService.GetDriverStandings(season, raceRound);
+
+                    // Check if the response contains the expected data structure                        
+                    if (standingsData == null || standingsData.MRData == null || standingsData.MRData.StandingsTable == null || standingsData.MRData.StandingsTable.StandingsLists.FirstOrDefault()?.Driverstandings == null)
+                    {
+                        Console.WriteLine("API response does not contain expected data structure.");
+                        Console.WriteLine(standingsData);
+                        break; // Break out of the loop if data is not as expected
+                    }
+
+                    // Save driver standings data to the database for the current round
+                    foreach (var driverStanding in standingsData.MRData.StandingsTable.StandingsLists.FirstOrDefault()?.Driverstandings)
+                    {
+                        if (driverStanding == null)
+                        {
+                            break;
+                        }
+                        var apiDriverStanding = new Driverstanding
+                        {
+
+                            Position = driverStanding.Position,
+                            PositionText = driverStanding.PositionText,
+                            Points = driverStanding.Points,
+                            Wins = driverStanding.Wins,
+                            Driver = new Driver { DriverId = driverStanding.Driver.DriverId },
+                            Constructors = driverStanding?.Constructors,
+                        };
+
+                        // Translate data from Driverstanding to DriverStanding (for the database)
+                        var dbDriverStanding = new DriverStanding
+                        {
+                            Round = raceRound,
+                            Position = apiDriverStanding.Position,
+                            positionText = apiDriverStanding.PositionText,
+                            Points = apiDriverStanding.Points,
+                            Wins = apiDriverStanding.Wins,
+                            DriverId = apiDriverStanding.Driver.DriverId,
+                            SeasonsId = seasonYear,
+                            ConstructorId = apiDriverStanding.Constructors?.FirstOrDefault()?.ConstructorId
+                        };
+
+                        _data.DriverStandings.Add(dbDriverStanding);  // Save to database context
+                    }
+
+                    await _data.SaveChangesAsync(); // Save all changes to the database
+
+                    raceRound++; // Increment the round for the next iteration
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error: " + ex.Message);
+                Exception innerException = ex;
+                while (innerException.InnerException != null)
+                {
+                    innerException = innerException.InnerException;
+                }
+
+                Console.WriteLine("Error: " + innerException.Message);
+            }
+        }
+
+        private async Task SeedDriverStandingTransformed(DataContext context, ErgastService ergastService)
         {
             try
             {

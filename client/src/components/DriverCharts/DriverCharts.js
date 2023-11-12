@@ -1,73 +1,43 @@
 import React, { useEffect, useState } from 'react';
-import fetchData from '../../services/FetchData';
-import {
-    LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend,
-  } from 'recharts';
+import fetchData from '../../services/FetchData'; 
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
+import classes from './DriverCharts.module.css'
 
 const DriverCharts = () => {
   const [data, setData] = useState([]);
-  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const season = 2020;
-    const apiUrlBase = 'https://localhost:7249/api/DriverStanding';
-    let round = 1;
-    const maxRounds = Infinity; // Set an initial value, can be changed as needed
+    const apiUrl = 'https://localhost:7249/api/TransformedData?season=2020';
 
-    const fetchDataForRounds = async () => {
-      try {
-        const allData = [];
-
-        while (round <= maxRounds) {
-          const apiUrl = `${apiUrlBase}?season=${season}&round=${round}`;
-          const result = await fetchData(apiUrl);
-
-          // Check if the result is empty or has no data
-          if (!result || (Array.isArray(result) && result.length === 0)) {
-            break; // Exit the loop if there's no more data
-          }
-
-          allData.push(result);
-          round++;
-        }
-
-        setData(allData);
-        setLoading(false);
-      } catch (error) {
+    fetchData(apiUrl)  
+      .then((response) => {
+        setData(response);
+      })
+      .catch((error) => {
         console.error('Error fetching data:', error);
-        setLoading(false);
-      }
-    };
-
-    fetchDataForRounds();
+      });
   }, []);
 
-  console.log('DataCharts', data);
-
   return (
-    <div>
-      <div>
-        <h2>Driver Points Over Rounds</h2>
-        <LineChart width={800} height={400}>
-          <CartesianGrid strokeDasharray="3 3" />
-          <XAxis dataKey="round" />
-          <YAxis />
-          <Tooltip />
-          <Legend />
-          {data.map((roundData, roundIndex) => (            
-            roundData.map((driverData, driverIndex) => (
-              <Line
-                key={`${roundIndex}-${driverIndex}`} 
-                type="monotone"
-                dataKey="points" 
-                name={driverData.driverId} 
-              />
-            )))
-        )}
-        </LineChart>
-      </div>
+    <div className={classes.DriverChartWrapper}>
+      <h2>Driver Data Bar Chart</h2>
+      <BarChart width={1600} height={400} data={data}>
+        <CartesianGrid strokeDasharray="3 3" />
+        <XAxis dataKey="driverId" />
+        <YAxis />
+        <Tooltip />
+        <Legend />
+        {data.length > 0 && data.map((driverData, index) => (
+          <Bar
+            key={index}
+            dataKey={`round[${index}]`}
+            stackId="a"
+            fill={`rgba(${Math.random() * 255},${Math.random() * 255},${Math.random() * 255},0.6)`}
+          />
+        ))}
+      </BarChart>
     </div>
-  ); 
-            }
-  
-  export default DriverCharts;
+  );
+};
+
+export default DriverCharts;

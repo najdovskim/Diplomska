@@ -10,6 +10,7 @@ namespace Diplomska.Dal.Interfaces
     public interface IConstructorRepository
     {
         Task<List<Constructor>> GetAllConstructors(int seasonId);
-        Task<Constructor> GetConstructorById(string constructorId);
+        Task<Constructor> GetConstructorById(string constructorId);      
+
     }
 }

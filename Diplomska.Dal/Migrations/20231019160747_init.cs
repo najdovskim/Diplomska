@@ -4,7 +4,7 @@
 
 namespace Diplomska.Dal.Migrations
 {
-    public partial class ChangesToDriverStandings : Migration
+    public partial class init : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -61,6 +61,24 @@ namespace Diplomska.Dal.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Seasons", x => x.SeasonId);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "DriverStandingTransformed",
+                columns: table => new
+                {
+                    DriverName = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    ConstructorId = table.Column<string>(type: "nvarchar(450)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_DriverStandingTransformed", x => x.DriverName);
+                    table.ForeignKey(
+                        name: "FK_DriverStandingTransformed_Constructors_ConstructorId",
+                        column: x => x.ConstructorId,
+                        principalTable: "Constructors",
+                        principalColumn: "ConstructorId",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -130,6 +148,26 @@ namespace Diplomska.Dal.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Round",
+                columns: table => new
+                {
+                    RoundId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Points = table.Column<int>(type: "int", nullable: false),
+                    DriverName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    DriversFromTransformedDriverName = table.Column<string>(type: "nvarchar(450)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Round", x => x.RoundId);
+                    table.ForeignKey(
+                        name: "FK_Round_DriverStandingTransformed_DriversFromTransformedDriverName",
+                        column: x => x.DriversFromTransformedDriverName,
+                        principalTable: "DriverStandingTransformed",
+                        principalColumn: "DriverName");
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Results",
                 columns: table => new
                 {
@@ -185,6 +223,11 @@ namespace Diplomska.Dal.Migrations
                 column: "SeasonsId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_DriverStandingTransformed_ConstructorId",
+                table: "DriverStandingTransformed",
+                column: "ConstructorId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Races_CircuitId",
                 table: "Races",
                 column: "CircuitId");
@@ -203,6 +246,11 @@ namespace Diplomska.Dal.Migrations
                 name: "IX_Results_RaceId",
                 table: "Results",
                 column: "RaceId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Round_DriversFromTransformedDriverName",
+                table: "Round",
+                column: "DriversFromTransformedDriverName");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -214,7 +262,7 @@ namespace Diplomska.Dal.Migrations
                 name: "Results");
 
             migrationBuilder.DropTable(
-                name: "Constructors");
+                name: "Round");
 
             migrationBuilder.DropTable(
                 name: "Drivers");
@@ -223,10 +271,16 @@ namespace Diplomska.Dal.Migrations
                 name: "Races");
 
             migrationBuilder.DropTable(
+                name: "DriverStandingTransformed");
+
+            migrationBuilder.DropTable(
                 name: "Circuits");
 
             migrationBuilder.DropTable(
                 name: "Seasons");
+
+            migrationBuilder.DropTable(
+                name: "Constructors");
         }
     }
 }

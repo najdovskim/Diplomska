@@ -29,10 +29,24 @@ namespace Diplomska.Dal
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            //NEW ADDED CHANGE
+            /*modelBuilder.Entity<DriverStandingTransformed>()
+                .HasOne(d => d.Constructors)
+                .WithMany(c => c.DriverStandingTransformeds)
+                .HasForeignKey(d => d.ConstructorId);
+
+            // Relationship between Round and DriverStandingTransformed
+            modelBuilder.Entity<Round>()
+                .HasOne(r => r.DriversFromTransformed)
+                .WithMany(d => d.Rounds)
+                .HasForeignKey(r => r.DriverName);
+*/
+
+
             //base.OnModelCreating(modelBuilder);
-            // configure many-to-many relationship between Driver and Result
-            modelBuilder.Entity<Result>()
+    
+        
+
+        modelBuilder.Entity<Result>()
                 .HasKey(r => new { r.DriverId, r.RaceId });
 
             modelBuilder.Entity<Result>()
@@ -80,32 +94,6 @@ namespace Diplomska.Dal
                 .WithMany(s => s.Races)
                 .HasForeignKey(r => r.SeasonId);
 
-            //--------------
-
-
-            /*    modelBuilder.Entity<DriverStanding>()
-                    .HasKey(ds => new { ds.SeasonsId, ds.Round, ds.DriverId });
-
-                // Other entity configurations...
-
-                // Configure one-to-many relationship between DriverStanding and Driver
-                modelBuilder.Entity<DriverStanding>()
-                    .HasOne(ds => ds.Driver)
-                    .WithMany(d => d.DriverStandings)
-                    .HasForeignKey(ds => new { ds.DriverId }); // Use a composite foreign key
-
-                // configure one-to-many relationship between DriverStanding and Constructor
-                modelBuilder.Entity<DriverStanding>()
-                    .HasOne(ds => ds.Constructors)
-                    .WithMany(d => d.DriverStandings)
-                    .HasForeignKey(ds => ds.ConstructorId);
-
-                // configure one-to-many relationship between DriverStanding and Season
-                modelBuilder.Entity<DriverStanding>()
-                    .HasOne(ds => ds.Season)
-                    .WithMany(s => s.DriverStandings)
-                    .HasForeignKey(ds => ds.SeasonsId);*/
-
 
         }
 
@@ -117,7 +105,8 @@ namespace Diplomska.Dal
         public DbSet<DriverStanding> DriverStandings { get; set; }
         public DbSet<Race> Races { get; set; }
         public DbSet<Result> Results { get; set; }
-        public DbSet<Season> Seasons { get; set; }
+        public DbSet<Season> Seasons { get; set; }       
+        //public DbSet<Round> Rounds { get; set; }*/
 
         /*protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

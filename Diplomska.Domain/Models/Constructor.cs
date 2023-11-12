@@ -13,6 +13,6 @@ namespace Diplomska.Domain.Models
         public string Nationality { get; set; }
 
 
-        public List<DriverStanding> DriverStandings { get; set; }
+        public List<DriverStanding> DriverStandings { get; set; }       
     }
 }

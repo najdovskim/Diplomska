@@ -1,0 +1,33 @@
+.TitleWrapper{
+    background-color: rgb(234, 229, 223);
+    padding-top: 3%;   
+    
+}
+.TitleWrapper{
+    text-align: center;
+    color: rgb(169, 158,152);
+}
+
+.contentWrapper{   
+    display: flex;
+    justify-content: center;
+    padding: 100px 0px;
+    background-color: rgb(234, 229, 223);
+}
+
+
+.GridContainer {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 100px;
+}
+
+.imgContainer {
+    width: 120px;
+    height: 60px;
+}
+
+.imgContainer img {
+    width: 100%;
+    height: 100%;
+}

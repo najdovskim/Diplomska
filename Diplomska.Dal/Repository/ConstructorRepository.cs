@@ -33,5 +33,6 @@ namespace Diplomska.Dal.Repository
 
             return constructor;
         }
+  
     }
 }

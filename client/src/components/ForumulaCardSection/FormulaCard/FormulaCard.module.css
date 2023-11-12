@@ -1,0 +1,23 @@
+.FormulaImgContainer {
+    height: 250px;
+}
+
+.FormulaImgContainer img {
+    height: 100%;
+    width: 100%;
+}
+
+.forumlaCardWhite {
+    background-color: white;;
+}
+
+.formulaTitle {
+    font-size: 20px;
+    margin: 0px 20px;
+    margin-bottom: 10px;
+}
+
+.formulaDescription {
+    font-size: 16px;
+    margin: 0px 20px;
+}

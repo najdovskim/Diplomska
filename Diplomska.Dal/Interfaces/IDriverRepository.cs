@@ -10,7 +10,7 @@ namespace Diplomska.Dal.Interfaces
     public interface IDriverRepository
     {
         Task<List<Driver>> GetAllDrivers(int seasonId);
-        Task<Driver> GetDriverById(string driverId);
+        Task<Driver> GetDriverById(string driverId);       
     }
 
 

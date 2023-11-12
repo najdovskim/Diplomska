@@ -31,6 +31,7 @@ var mappingConfig = new MapperConfiguration(mc =>
     mc.AddProfile(new RaceMappingProfile());
     mc.AddProfile(new ResultMappingProfile());
     mc.AddProfile(new SeasonMappingProfile());
+    mc.AddProfile(new TransformedDataMappingProfile());
 });
 //builder.Services.AddAutoMapperProfile<CircuitMappingProfile>();
 IMapper mapper = mappingConfig.CreateMapper();
@@ -58,6 +59,8 @@ builder.Services.AddScoped<IRaceService, RaceService>();
 builder.Services.AddScoped<IDriverStandingRepository, DriverStandingRepository>();
 builder.Services.AddScoped<IDriverStandingService, DriverStandingService>();
 
+builder.Services.AddScoped<ITransformedData, TransformedDataService>();
+
 
 builder.Services.AddScoped<SeedData>();
 
@@ -71,8 +74,8 @@ builder.Services.AddCors(p => p.AddPolicy("corsapp", builder =>
 
 
 var app = builder.Build();
-
-/*using (var scope = app.Services.CreateScope())
+/*
+using (var scope = app.Services.CreateScope())
 {
     var services = scope.ServiceProvider;
     try
@@ -85,23 +88,10 @@ var app = builder.Build();
         var logger = services.GetRequiredService<ILogger<Program>>();
         logger.LogError(ex, "An error occurred while seeding the database.");
     }
-}*/
-
-
-/*using (var scope = app.Services.CreateScope())
-{
-    var services = scope.ServiceProvider;
-    try
-    {
-        SeedData.InitializeAsync(services).Wait();
-    }
-    catch (Exception ex)
-    {
-        var logger = services.GetRequiredService<ILogger<Program>>();
-        logger.LogError(ex, "An error occurred while seeding the database.");
-    }
 }
 */
+
+
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

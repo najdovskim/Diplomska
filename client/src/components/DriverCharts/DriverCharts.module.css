@@ -1,0 +1,11 @@
+.DriverChartWrapper{
+    background-color: rgb(234, 229, 223);
+    padding-left: 10%;
+    padding-top: 1%;
+    align-content: center;
+}
+
+.DriverChartWrapper h2{
+    text-align: center;
+    padding-right: 20%;
+}

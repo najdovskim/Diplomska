@@ -11,5 +11,7 @@ namespace Diplomska.Service.Interfaces
     public interface IDriverStandingService
     {
         Task<List<DriverStandingGetDto>> GetDriverStandingByRound(int seasonId, int round);
+        Task<List<DriverStandingGetDto>> GetAllDriverStandings(int seasonId);
+        Task<TransformedDataDto> GetDriverData(string driverId);
     }
 }

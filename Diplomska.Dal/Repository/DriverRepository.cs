@@ -19,9 +19,10 @@ namespace Diplomska.Dal.Repository
 
         public async Task<List<Driver>> GetAllDrivers(int seasonId)
         {
-            return await _ctx.Drivers
+           /* return await _ctx.Drivers
             .Where(d => d.DriverStandings.Any(ds => ds.SeasonsId == seasonId))
-            .ToListAsync();
+            .ToListAsync();*/
+           return await _ctx.Drivers.ToListAsync();
         }
 
         public async Task<Driver> GetDriverById(string driverId)

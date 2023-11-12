@@ -22,6 +22,29 @@ namespace Diplomska.Service.Services
             _mapper = mapper;
         }
 
+        public async Task<List<DriverStandingGetDto>> GetAllDriverStandings(int seasonId)
+        {
+            var driverStanding = await _driverStandingRepository.GetAllDriverStandings(seasonId);
+
+
+            if (driverStanding.Equals(null))
+            {
+                return null;
+            }
+
+            var mapped = _mapper.Map<List<DriverStandingGetDto>>(driverStanding);
+
+            return mapped;
+        }
+
+        public async Task<TransformedDataDto> GetDriverData(string driverId)
+        {
+            var Driver = await _driverStandingRepository.GetStandingsForDriver(driverId);
+            var DriverGet = _mapper.Map<TransformedDataDto>(Driver);
+
+            return DriverGet;
+        }
+
         public async Task<List<DriverStandingGetDto>> GetDriverStandingByRound(int seasonId, int round)
         {
             var driverStanding = await _driverStandingRepository.GetDriverStandingByRound(seasonId, round);

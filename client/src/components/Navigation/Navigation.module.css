@@ -1,5 +1,5 @@
 .mainContainer{
-    background-color: rgb(214, 212, 212);   
+    background-color: rgb(27, 28, 32);   
 
 }
 .contentWrapper{   
@@ -9,9 +9,10 @@
     display:flex;
     justify-content: space-around;
 }
-.linkWrapper{
+.linkWrapper{    
     align-items: flex-start;
-    justify-content: start;    
+    justify-content:end;
+    margin-right: 10%;    
     display: flex;
     flex: 1;
     width: 100%;
@@ -26,4 +27,7 @@
 .imageWrapper{
     flex: 1;
     width: 100%;
+}
+.linkWrapper p{
+    color: white;
 }
